@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Controle de Vacinação</title>
+</head>
+
+<body>
+
+    <!-- Opcao -->
+    <div th:fragment="menu-item-option(texto, url, svg)" class="flex items-center hover:text-white">
+        <!-- Imagem -->
+        <svg th:replace="${svg}"></svg>
+        <!-- Texto -->
+        <a th:text="${texto}" th:hx-get="${url}" hx-target="#main" hx-swap="outerHTML" hx-push-url="true" class="cursor-pointer px-2 text-gray-400 hover:text-white">Cadastrar</a>
+    </div>
+
+</body>
+
+</html>

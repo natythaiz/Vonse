@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- https://preline.co/docs -->
+
+    <div class="flex flex-col md:w-2/3 ml-10 mt-5">
+      <div class="overflow-x-auto">
+        <div class="min-w-full inline-block align-middle">
+          <div class="border rounded-xl overflow-hidden shadow">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead>
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Name</th>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Age</th>
+                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Address</th>
+                  <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="odd:bg-white even:bg-gray-100 hover:bg-gray-200">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">John Brown</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">45</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">New York No. 1 Lake Park</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                    <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-red-800 focus:outline-none focus:text-red-800 disabled:opacity-50 disabled:pointer-events-none">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form action="#" class="w-2/3 mt-10 ms-16">
+      <label for="input-label" class="block text-gray-700 font-medium mb-2">Email</label>
+      <input type="email" id="input-label" class="w-1/2 py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Seu Texto" />
+
+      <hr class="mt-5 mb-5" />
+
+      <div>
+        <label for="input" class="block text-gray-700 font-medium mb-2">Email</label>
+        <div class="relative w-1/2">
+          <input type="text" id="input" name="input" class="py-3 px-4 w-full block border-red-500 rounded-lg text-sm focus:border-red-500 focus:ring-red-500" required="" aria-describedby="hs-validation-name-error-helper" />
+          <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
+            <svg class="shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" x2="12" y1="8" y2="12"></line>
+              <line x1="12" x2="12.01" y1="16" y2="16"></line>
+            </svg>
+          </div>
+        </div>
+        <p class="text-sm text-red-600 mt-2">Please enter a valid email address.</p>
+      </div>
+
+      <hr class="mt-5 mb-5" />
+
+      <div class="w-1/2">
+        <label for="textarea-label" class="block text-gray-700 font-medium mb-2">Comment</label>
+        <textarea id="textarea-label" class="py-3 px-4 block w-full text-gray-500 border-gray-300 rounded-lg text-sm focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" rows="3" placeholder="Say hi..."></textarea>
+      </div>
+
+      <hr class="mt-5 mb-5" />
+
+      <div>
+        <label for="textarea" class="block text-gray-700 font-medium mb-2">Comment</label>
+        <div class="relative w-1/2">
+          <textarea id="textarea" class="py-3 px-4 block w-full border-red-500 rounded-lg text-sm focus:border-red-500 focus:ring-red-500 disabled:opacity-50 disabled:pointer-events-none" rows="3" placeholder="Say hi..."></textarea>
+          <div class="absolute top-0 end-0 flex items-center pointer-events-none p-3">
+            <svg class="shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" x2="12" y1="8" y2="12"></line>
+              <line x1="12" x2="12.01" y1="16" y2="16"></line>
+            </svg>
+          </div>
+        </div>
+        <p class="text-sm text-red-600 mt-2">Your message should be at least 10 characters long.</p>
+      </div>
+
+      <hr class="mt-5 mb-5" />
+
+      <div class="flex">
+        <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-gray-600 focus:ring-transparent disabled:opacity-50 disabled:pointer-events-none" id="checkbox" />
+        <label for="checkbox" class="text-sm text-gray-500 ms-3">Default checkbox</label>
+      </div>
+
+      <div class="flex items-center mt-2">
+        <label for="hs-basic-with-description" class="text-sm text-gray-500 me-3">Off</label>
+        <input
+          type="checkbox"
+          id="hs-basic-with-description"
+          class="relative w-[3.25rem] h-7 p-px bg-gray-100 border-transparent text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-transparent disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-gray-600 checked:border-gray-600 focus:checked:border-gray-600 before:inline-block before:size-6 before:bg-white checked:before:bg-gray-200 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:shadow before:transform before:ring-0 before:transition before:ease-in-out before:duration-200"
+        />
+        <label for="hs-basic-with-description" class="text-sm text-gray-500 ms-3">On</label>
+      </div>
+
+      <hr class="mt-5 mb-5" />
+
+      <div class="flex">
+        <input type="radio" name="radio" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-gray-600 focus:ring-transparent disabled:opacity-50 disabled:pointer-events-none" id="radio1" checked="checked" />
+        <label for="radio1" class="text-sm text-gray-500 ms-2">Default radio</label>
+      </div>
+      <div class="flex mt-2">
+        <input type="radio" name="radio" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-gray-600 focus:ring-transparent disabled:opacity-50 disabled:pointer-events-none" id="radio2" />
+        <label for="radio2" class="text-sm text-gray-500 ms-2">Default radio</label>
+      </div>
+
+      <hr class="mt-5 mb-5" />
+
+      <div class="w-1/2">
+        <label for="select1" class="block text-sm font-medium mb-2">Label</label>
+        <select id="select1" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-gray-500 focus:ring-transparent disabled:opacity-50 disabled:pointer-events-none">
+          <option selected="">Open this select menu</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+
+        <label for="select2" class="block text-sm font-medium mb-2">Label</label>
+        <div class="relative">
+          <select id="select2" class="py-3 px-4 pe-16 block w-full border-red-500 rounded-lg text-sm focus:border-red-500 focus:ring-transparent disabled:opacity-50 disabled:pointer-events-none">
+            <option selected="">Open this select menu</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+          <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-8">
+            <svg class="shrink-0 size-4 text-red-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" x2="12" y1="8" y2="12"></line>
+              <line x1="12" x2="12.01" y1="16" y2="16"></line>
+            </svg>
+          </div>
+        </div>
+        <p class="text-sm text-red-600 mt-2">Please select a valid state.</p>
+      </div>
+
+      <hr class="mt-5 mb-5" />
+
+      <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none">Button</button>
+      <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-100 text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none">Button</button>
+      <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-teal-100 text-teal-800 hover:bg-teal-200 focus:outline-none focus:bg-teal-200 disabled:opacity-50 disabled:pointer-events-none">Button</button>
+      <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none">Button</button>
+      <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-red-100 text-red-800 hover:bg-red-200 focus:outline-none focus:bg-red-200 disabled:opacity-50 disabled:pointer-events-none">Button</button>
+      <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-yellow-100 text-yellow-800 hover:bg-yellow-200 focus:outline-none focus:bg-yellow-200 disabled:opacity-50 disabled:pointer-events-none">Button</button>
+      <button type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-white/10 text-white hover:bg-white/20 focus:outline-none focus:bg-white/20 disabled:opacity-50 disabled:pointer-events-none">Button</button>
+
+      <hr class="mt-5 mb-5" />
+
+      <div class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-gray-600 rounded-full" role="status" aria-label="loading">
+        <span class="sr-only">Loading...</span>
+      </div>
+
+      <hr class="mt-5 mb-5" />
+
+      <!-- Pagination -->
+      <nav class="flex items-center -space-x-px" aria-label="Pagination">
+        <button
+          type="button"
+          class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm first:rounded-s-lg last:rounded-e-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
+          aria-label="Previous"
+        >
+          <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+          <span class="hidden sm:block">Previous</span>
+        </button>
+        <button
+          type="button"
+          class="min-h-[38px] min-w-[38px] flex justify-center items-center bg-gray-200 text-gray-800 border border-gray-200 py-2 px-3 text-sm first:rounded-s-lg last:rounded-e-lg focus:outline-none focus:bg-gray-300 disabled:opacity-50 disabled:pointer-events-none"
+          aria-current="page"
+        >
+          1
+        </button>
+        <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-gray-200 text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm first:rounded-s-lg last:rounded-e-lg focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
+          2
+        </button>
+        <button type="button" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-gray-200 text-gray-800 hover:bg-gray-100 py-2 px-3 text-sm first:rounded-s-lg last:rounded-e-lg focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
+          3
+        </button>
+        <button
+          type="button"
+          class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm first:rounded-s-lg last:rounded-e-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
+          aria-label="Next"
+        >
+          <span class="hidden sm:block">Next</span>
+          <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </button>
+      </nav>
+      <!-- End Pagination -->
+    </form>
+  </body>
+</html>

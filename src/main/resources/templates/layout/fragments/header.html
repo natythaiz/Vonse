@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <title>Controle de Vacinação</title>
+</head>
+
+<body>
+  <div th:fragment="header">
+    <!-- Header -->
+    <header class="flex items-center justify-between bg-gray-800 p-4">
+      <!-- Botao Hamburger -->
+      <div class="md:hidden">
+        <button id="menu-btn" type="button" class="hamburger z-40 block focus:outline-none md:hidden">
+          <span class="hamburger-top"></span>
+          <span class="hamburger-middle"></span>
+          <span class="hamburger-bottom"></span>
+        </button>
+      </div>
+
+      <!-- Icone e nome sistema -->
+      <a th:href="@{/}">
+        <div class="flex items-center">
+          <img src="/images/syringe.png" alt="Ícone de uma seringa" class="h-8 w-8 md:h-12 md:w-12" />
+          <div class="text-xl font-semibold text-gray-400 md:text-3xl">Controle de Vacinação</div>
+        </div>
+      </a>
+
+      <!-- Usuário e login/logout -->
+      <div class="hidden items-center md:flex">
+        <div class="text-sm text-gray-300 md:text-xl">Grosbilda</div>
+        <a href="#" class="ml-5 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600"> Login </a>
+        <a href="#" class="ml-5 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600"> Logout </a>
+      </div>
+
+      <!-- Botao Usuario -->
+      <div class="mr-1 text-gray-300 md:hidden">
+        <button id="menu-usuario-btn" type="button" class="hamburger z-40 block focus:outline-none md:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="menu" class="absolute bottom-0 left-0 top-0 hidden min-h-screen w-full flex-col space-y-3 self-end bg-gray-800 py-1 pl-12 pt-40 text-lg text-gray-400">
+      <th:block th:replace="~{layout/fragments/menu :: menu}"></th:block>
+    </div>
+
+    <!-- Mobile Menu Usuario -->
+    <div id="menu-usuario" class="absolute bottom-0 left-0 top-0 hidden min-h-screen w-full flex-col items-end space-y-3 self-end bg-gray-800 py-1 pr-12 pt-20 text-lg text-gray-400">
+      <div class="text-gray-300">Grosbilda</div>
+      <a href="#" class="ml-5 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600"> Login </a>
+      <a href="#" class="ml-5 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600"> Logout </a>
+    </div>
+  </div>
+</body>
+
+</html>

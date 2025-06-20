@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Listar Lotes</title>
+</head>
+
+<body>
+    <!-- conteudo principal -->
+    <main layout:fragment="conteudo" th:fragment="tabela" id="main" class="flex flex-col align-middle w-full m-10">
+        <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Lotes</h2>
+
+        <div class="hidden md:flex flex-col mt-10">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <div class="border rounded-xl overflow-hidden shadow">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <div th:replace="~{layout/fragments/paginacao :: coluna(${pagina}, 'l.codigo', 'Código', '')}"></div>
+                                    <div th:replace="~{layout/fragments/paginacao :: coluna(${pagina}, 'validade', 'Validade', '')}"></div>
+                                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nro Doses Lote</th>
+                                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nro Doses Atual</th>
+                                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nome Vacina</th>
+                                    <th scope="col" colspan="2" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="lote : ${pagina.conteudo}" class="odd:bg-white even:bg-gray-100 hover:bg-gray-200">
+                                    <td th:text="${lote.codigo}" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">John Brown</td>
+                                    <td th:text="${{lote.validade}}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">45</td>
+                                    <td th:text="${lote.nroDosesDoLote}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">New York No. 1 Lake Park</td>
+                                    <td th:text="${lote.nroDosesAtual}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">New York No. 1 Lake Park</td>
+                                    <td th:text="${lote.vacina.nome}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">New York No. 1 Lake Park</td>
+                                    <td><a th:hx-get="@{/lotes/alterar/{codigo}(codigo=${lote.codigo})}" hx-target="#main" hx-swap="outerHTML" class="cursor-pointer text-blue-600 hover:text-blue-500 decoration-2 hover:underline focus:outline-hidden focus:underline">Alterar</a></td>
+                                    <td><a th:hx-get="@{/lotes/remover/{codigo}(codigo=${lote.codigo})}" hx-target="#main" hx-swap="outerHTML" th:hx-confirm="${'Você vai remover o lote ' + lote.codigo + '!'}" class="cursor-pointer text-blue-600 hover:text-blue-500 decoration-2 hover:underline focus:outline-hidden focus:underline">Remover</a></td>
+                                </tr>
+                                <tr th:if="${pagina.vazia}">
+                                    <td colspan="4">Nenhum lote encontrado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex md:hidden flex-col md:w-2/3 mt-10">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <div th:each="lote : ${pagina.conteudo}">
+                        <p th:text="'Código: ' + ${lote.codigo}"></p>
+                        <p th:text="'Validade: ' + ${lote.validade}"></p>
+                        <p th:text="'Nro Doses do Lote: ' + ${lote.nroDosesDoLote}"></p>
+                        <p th:text="'Nro Doses Atual do Lote: ' + ${lote.nroDosesAtual}"></p>
+                        <p th:text="'Nome da Vacina: ' + ${lote.vacina.nome}"></p>
+                        <hr class="mt-5 mb-5" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="~{layout/fragments/paginacao :: paginacao(${pagina})}"></div>
+
+    </main>
+    <!-- !conteudo principal -->
+</body>
+
+</html>

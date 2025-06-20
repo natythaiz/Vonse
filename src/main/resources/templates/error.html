@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Página de Erro</title>
+  </head>
+  <body>
+    <!-- conteudo principal -->
+    <main layout:fragment="conteudo" th:fragment="conteudo"  id="main" class="flex flex-col align-middle justify-center w-full m-10">
+      <img th:src="@{/images/erro.png}" class="mx-auto block mt-5" alt="Erro 404" />
+      <h1 class="text-center mt-5 mb-5 text-2xl">Ocorreu um erro na aplicação. <a th:href="@{/}">Volte para a página principal.</a></h1>
+    </main>
+    <!-- !conteudo principal -->
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Cadastrar Lote</title>
+</head>
+
+<body>
+    <!-- conteudo principal -->
+    <main layout:fragment="conteudo" th:fragment="formulario" id="main" class="flex flex-col align-middle w-full m-10">
+
+        <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Cadastrar Lote</h2>
+
+        <div class="md:flex flex-col mt-5">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <form th:hx-post="@{/lotes/cadastrar}" hx-target="#main" hx-swap="outerHTML" th:object="${lote}" class="md:flex flex-col w-2/3 mt-10 ms-16">
+
+                        <label for="nome" class="block text-gray-700 font-medium mb-2 mt-6">Nome da Vacina</label>
+                        <div class="relative w-full md:w-1/2">
+                            <input type="text" th:field="${lote.vacina.nome}" disabled class="block w-full px-4 py-3 text-gray-500 disabled:opacity-50 disabled:pointer-events-none" />
+                        </div>
+
+                        <div th:replace="~{layout/fragments/forms :: inputdata('Validade', 'validade')}"></div>
+                        <div th:replace="~{layout/fragments/forms :: inputtext('Número Doses do Lote', 'nroDosesDoLote')}"></div>
+                        <div th:replace="~{layout/fragments/forms :: inputtext('Número Doses Atual do Lote', 'nroDosesAtual')}"></div>
+                        <input type="hidden" name="vacina.codigo" th:value="${lote.vacina.codigo}">
+                        <input type="hidden" name="vacina.nome" th:value="${lote.vacina.nome}">
+                        <input type="hidden" name="vacina.descricao" th:value="${lote.vacina.descricao}">
+
+                        <div class="mt-5">
+                            <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${notificacao != null}" th:object="${notificacao}">
+            <input type="hidden" id="mensagemSA2" th:value="*{mensagem}">
+            <input type="hidden" id="tipoSA2" th:value="*{tipo}">
+            <input type="hidden" id="intervaloSA2" th:value="*{intervalo}">
+        </div>
+
+    </main>
+    <!-- !conteudo principal -->
+</body>
+
+</html>

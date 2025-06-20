@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Pesquisar Pessoas</title>
+</head>
+
+<body>
+    <!-- conteudo principal -->
+    <main layout:fragment="conteudo" th:fragment="formulario" id="main" class="flex flex-col align-middle w-full m-10">
+
+        <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Pesquisar</h2>
+
+        <div class="md:flex flex-col mt-5">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <form th:hx-get="@{/pessoas/pesquisar}" hx-target="#main" hx-swap="outerHTML" class="md:flex flex-col w-2/3 mt-10 ms-16">
+                        <label for="codigo" class="block text-gray-700 font-medium mb-2">Código</label>
+                        <input type="number" name="codigo" id="codigo" class="w-1/2 py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" />
+
+                        <label for="nome" class="mt-5 block text-gray-700 font-medium mb-2">Nome</label>
+                        <input type="text" name="nome" id="nome" class="w-1/2 py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" />
+
+                        <label for="cpf" class="mt-5 block text-gray-700 font-medium mb-2">CPF</label>
+                        <input type="text" name="cpf" id="cpf" class="w-1/2 py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" />
+
+                        <label for="dataNascimentoInicial" class="mt-5 block text-gray-700 font-medium mb-2">Nascimento a partir de</label>
+                        <input type="text" name="dataNascimentoInicial" id="dataNascimentoInicial" class="componentedata w-1/2 py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" readonly />
+
+                        <label for="dataNascimentoFinal" class="mt-5 block text-gray-700 font-medium mb-2">Nascimento até</label>
+                        <input type="text" name="dataNascimentoFinal" id="dataNascimentoFinal" class="componentedata w-1/2 py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" readonly />
+
+                        <div class="mt-5">
+                            <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none">Pesquisar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${notificacao != null}" th:object="${notificacao}">
+            <input type="hidden" id="mensagemSA2" th:value="*{mensagem}">
+            <input type="hidden" id="tipoSA2" th:value="*{tipo}">
+            <input type="hidden" id="intervaloSA2" th:value="*{intervalo}">
+        </div>
+
+    </main>
+    <!-- !conteudo principal -->
+</body>
+
+</html>

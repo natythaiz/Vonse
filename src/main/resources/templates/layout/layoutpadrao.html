@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Controle de Vacinação</title>
+  <link rel="shortcut icon" th:href="@{/images/logo.png}" />
+  <!-- Estilo Principal do Template -->
+  <link rel="stylesheet" type="text/css" href="../../static/css/style.css" th:href="@{/css/style.css}" />
+  <!-- Biblioteca Alpine.js usada no Menu -->
+  <script defer src="../../static/js/vendors/alpinejs/cdn.min.js" th:src="@{/js/vendors/alpinejs/cdn.min.js}"></script>
+  <!-- Script para controle do Menu -->
+  <script src="../../static/js/scriptmenus.js" th:src="@{/js/scriptmenus.js}" defer></script>
+  <!-- Biblioteca htmx -->
+  <script defer src="../../static/js/vendors/htmx/htmx.min.js" th:src="@{/js/vendors/htmx/htmx.min.js}"></script>
+  <script defer src="../../static/js/vendors/htmx/htmx-ext-response-targets.min.js" th:src="@{/js/vendors/htmx/htmx-ext-response-targets.min.js}"></script>
+
+  <!-- Estilo do MDDateTimePicker -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" />
+  <link rel="stylesheet" type="text/css" href="../../static/css/vendors/mddatetimepicker/mdDateTimePicker.min.css" th:href="@{/css/vendors/mddatetimepicker/mdDateTimePicker.min.css}" />
+  <!-- Estilo do MCDatepicker -->
+  <link rel="stylesheet" type="text/css" href="../../static/css/vendors/mcdatepicker/mc-calendar.min.css" th:href="@{/css/vendors/mcdatepicker/mc-calendar.min.css}" />
+  <!-- Estilo do SweetAlert2 -->
+  <link rel="stylesheet" type="text/css" href="../../static/css/vendors/sweetalert2/sweetalert2.min.css" th:href="@{/css/vendors/sweetalert2/sweetalert2.min.css}" />
+
+  <!-- Biblioteca SimpleMaskMoney -->
+  <script src="../../static/js/vendors/maskmoney/simple-mask-money.umd.min.js" th:src="@{/js/vendors/maskmoney/simple-mask-money.umd.min.js}" defer></script>
+  <!-- Biblioteca MCDatepicker -->
+  <script src="../../static/js/vendors/mcdatepicker/mc-calendar.min.js" th:src="@{/js/vendors/mcdatepicker/mc-calendar.min.js}" defer></script>
+  <!-- Biblioteca MDDateTimePicker -->
+  <script src="../../static/js/vendors/mddatetimepicker/draggabilly.pkgd.min.js" th:src="@{/js/vendors/mddatetimepicker/draggabilly.pkgd.min.js}" defer></script>
+  <script src="../../static/js/vendors/mddatetimepicker/moment.min.js" th:src="@{/js/vendors/mddatetimepicker/moment.min.js}" defer></script>
+  <script src="../../static/js/vendors/mddatetimepicker/mdDateTimePicker.js" th:src="@{/js/vendors/mddatetimepicker/mdDateTimePicker.js}" defer></script>
+  <!-- Biblioteca SweetAlert2 -->
+  <script src="../../static/js/vendors/sweetalert2/sweetalert2.all.min.js.js" th:src="@{/js/vendors/sweetalert2/sweetalert2.all.min.js}" defer></script>
+  <!-- Script para o codigo ninja do Godoi -->
+  <script src="../../static/js/codigoninjadogodoi.js" th:src="@{/js/codigoninjadogodoi.js}" defer></script>
+
+</head>
+
+<body>
+  <!-- Container da página -->
+  <div class="container flex h-screen min-w-full flex-col">
+    <!-- Navbar da pagina TOPO -->
+    <div th:replace="~{layout/fragments/header :: header}"></div>
+
+    <!-- Meio -->
+    <section class="flex flex-1">
+      <!-- Menu lateral ESQUERDA -->
+      <div th:replace="~{layout/fragments/sidebar :: sidebar}"></div>
+
+      <!-- Conteudo Principal da pagina -->
+      <th:block layout:fragment="conteudo"></th:block>
+    </section>
+
+    <!-- Rodape da pagina BAIXO -->
+    <div th:replace="~{layout/fragments/rodape :: rodape}"></div>
+  </div>
+
+  <!-- Bloco para JavaScript adicional que a página pode precisar -->
+  <th:block layout:fragment="scripts"></th:block>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Mensagem</title>
+</head>
+
+<body>
+    <!-- conteudo principal -->
+    <main layout:fragment="conteudo" th:fragment="texto" id="main" class="flex flex-col align-middle w-full m-10">
+
+        <h2 th:text="${mensagem}" class="text-xl font-semibold text-gray-400 md:text-3xl">Cadastro efetuado com sucesso</h2>
+
+    </main>
+    <!-- !conteudo principal -->
+</body>
+
+</html>

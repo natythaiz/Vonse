@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Cadastrar Pessoa</title>
+</head>
+
+<body>
+    <!-- conteudo principal -->
+    <main layout:fragment="conteudo" th:fragment="formulario" id="main" class="flex flex-col align-middle w-full m-10">
+
+        <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Cadastrar</h2>
+
+        <div class="md:flex flex-col mt-10">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <form th:hx-post="@{/pessoas/cadastrar}" hx-target="#main" hx-swap="outerHTML" th:object="${pessoa}" class="md:flex flex-col w-2/3 mt-10 ms-16">
+                        
+                        <div th:replace="~{layout/fragments/forms :: inputtext('Nome', 'nome')}"></div>
+                        <div th:replace="~{layout/fragments/forms :: inputtext('CPF', 'cpf')}"></div>
+                        <div th:replace="~{layout/fragments/forms :: inputdata('Nascimento', 'dataNascimento')}"></div>
+
+                        <div class="mt-5">
+                            <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none">Cadastrar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${notificacao != null}" th:object="${notificacao}">
+            <input type="hidden" id="mensagemSA2" th:value="*{mensagem}">
+            <input type="hidden" id="tipoSA2" th:value="*{tipo}">
+            <input type="hidden" id="intervaloSA2" th:value="*{intervalo}">
+        </div>
+
+    </main>
+    <!-- !conteudo principal -->
+</body>
+
+</html>

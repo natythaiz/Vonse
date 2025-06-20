@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Controle de Vacinação</title>
+</head>
+
+<body>
+
+    <button @click="open = !open" th:fragment="menu-item-button(texto, svg)" class="flex w-48 cursor-pointer items-center justify-between py-3 text-gray-400 hover:text-white focus:outline-none">
+        <span class="flex items-center">
+            <!-- Imagem -->
+            <svg th:replace="${svg}"></svg>
+            <!-- Texto -->
+            <span th:text="${texto}" class="ms-2">Pessoa</span>
+        </span>
+
+        <!-- Seta direito/baixo -->
+        <span>
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path x-show="! open" d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none"></path>
+                <path x-show="open" d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </span>
+    </button>
+
+</body>
+
+</html>
