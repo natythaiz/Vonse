@@ -124,9 +124,9 @@ __sudo apt update && sudo apt install -y pgadmin4-desktop__
 Feito isso, dê esses comandos no terminal na pasta onde o projeto estará:  
 __git clone https://github.com/natythaiz/Vonse.git__  
 __cd Vonse__  
-  5.1) Se quiser editar e postar no git novamente, edite e faça:  
+   Se quiser editar e postar no git novamente, edite e faça:  
    __git add .__  
    __git commit -m "Comentário do commit"__  
    __git push origin main__  
-  5.2) Se alguém da equipe fez alguma alteração e você quiser puxar o que foi alterado, faça:  
+  Se alguém da equipe fez alguma alteração e você quiser puxar o que foi alterado, faça:  
    __git pull origin main__
