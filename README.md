@@ -120,8 +120,8 @@ __sudo apt update && sudo apt install -y pgadmin4-desktop__
   4.2) Adicione o servidor do PostgreSQL clicando em Add Server
 
 5) Feito isso, dê esses comandos no terminal na pasta onde o projeto estará:  
-__git clone https://github.com/natythaiz/Vonse.git__ (para clonar o projeto, já que é a primeira vez pegando o projeto)  
-__cd Vonse__ (para entrar na pasta do projeto)  
+__git clone https://github.com/natythaiz/Vonse.git__  
+__cd Vonse__  
   5.1) Se quiser editar e postar no git novamente, edite e faça:  
    __git add .__  
    __git commit -m "Comentário do commit"__  
