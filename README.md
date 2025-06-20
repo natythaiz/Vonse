@@ -117,9 +117,11 @@ __curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg -
 __sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/noble pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'__  
 __sudo apt update && sudo apt install -y pgadmin4-desktop__  
   4.1) Abra o pgAdmin4  
-  4.2) Adicione o servidor do PostgreSQL clicando em Add Server
+  4.2) Adicione o servidor do PostgreSQL clicando em Add Server  
 
-5) Feito isso, dê esses comandos no terminal na pasta onde o projeto estará:  
+
+### Usando o projeto
+Feito isso, dê esses comandos no terminal na pasta onde o projeto estará:  
 __git clone https://github.com/natythaiz/Vonse.git__  
 __cd Vonse__  
   5.1) Se quiser editar e postar no git novamente, edite e faça:  
