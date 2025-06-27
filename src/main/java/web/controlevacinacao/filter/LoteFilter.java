@@ -12,6 +12,7 @@ public class LoteFilter {
     private Integer minimoDosesAtual;
     private Integer maximoDosesAtual;
     private String nomeVacina;
+    private int text;
 
     public Long getCodigo() {
         return codigo;
