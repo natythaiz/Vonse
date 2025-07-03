@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ControleVacinacaoApplication<controlevacinacao>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "web.controlevacinacao.ControleVacinacaoApplication",
+            "projectName": "controlevacinacao",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

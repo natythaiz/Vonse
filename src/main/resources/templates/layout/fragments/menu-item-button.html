@@ -5,17 +5,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <title>Controle de Vacinação</title>
+    <title>Sistema de Gerenciamento</title>
 </head>
 
 <body>
 
-    <button @click="open = !open" th:fragment="menu-item-button(texto, svg)" class="flex w-48 cursor-pointer items-center justify-between py-3 text-gray-400 hover:text-white focus:outline-none">
+    <button @click="open = !open" th:fragment="menu-item-button(texto, svg)" class="flex w-48 cursor-pointer items-center justify-between py-3 text-gray-300 hover:text-white focus:outline-none">
         <span class="flex items-center">
             <!-- Imagem -->
             <svg th:replace="${svg}"></svg>
             <!-- Texto -->
-            <span th:text="${texto}" class="ms-2">Pessoa</span>
+            <span th:text="${texto}" class="ms-2">Cliente</span>
         </span>
 
         <!-- Seta direito/baixo -->

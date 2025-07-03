@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" th:href="@{/css/style.css}" />
-    <title>Controle de Vacinação</title>
+    <title>Sistema de Gerenciamento</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
         <!-- Imagem -->
         <svg th:replace="${svg}"></svg>
         <!-- Texto -->
-        <a th:text="${texto}" th:hx-get="${url}" hx-target="#main" hx-swap="outerHTML" hx-push-url="true" class="cursor-pointer px-2 text-gray-400 hover:text-white">Cadastrar</a>
+        <a th:text="${texto}" th:hx-get="${url}" hx-target="#main" hx-swap="outerHTML" hx-push-url="true" class="cursor-pointer px-2 text-gray-300 hover:text-white">Cadastrar</a>
     </div>
 
 </body>
