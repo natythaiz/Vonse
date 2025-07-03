@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Listar Produtos</title>
+</head>
+
+<body>
+<main layout:fragment="conteudo" th:fragment="tabela" id="main" class="flex flex-col align-middle w-full m-10">
+
+    <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Produtos</h2>
+
+    <!-- Tabela desktop -->
+    <div class="hidden md:flex flex-col mt-10">
+        <div class="overflow-x-auto">
+            <div class="min-w-full inline-block align-middle">
+                <div class="border rounded-xl overflow-hidden shadow">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead>
+                            <tr>
+                                <div th:replace="~{layout/fragments/paginacao :: coluna(${pagina}, 'id', 'ID', '')}"></div>
+                                <div th:replace="~{layout/fragments/paginacao :: coluna(${pagina}, 'nome', 'Nome', '')}"></div>
+                                <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Categoria</th>
+                                <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Tipo</th>
+                                <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Preço Custo</th>
+                                <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Preço Venda</th>
+                                <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Estoque</th>
+                                <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Fornecedor</th>
+                                <th colspan="2" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="produto : ${pagina.conteudo}" class="odd:bg-white even:bg-gray-100 hover:bg-gray-200">
+                                <td th:text="${produto.id}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                <td th:text="${produto.nome}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                <td th:text="${produto.categoria}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                <td th:text="${produto.tipo}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                <td th:text="${produto.precoCustoFormatado}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                <td th:text="${produto.precoVendaFormatado}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                <td th:text="${produto.estoque}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                <td th:text="${produto.fornecedor}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                <td>
+                                    <a th:hx-get="@{/produtos/alterar/{id}(id=${produto.id})}" hx-target="#main" hx-swap="outerHTML"
+                                       class="text-blue-600 hover:text-blue-500 underline">Alterar</a>
+                                </td>
+                                <td>
+                                    <a th:hx-get="@{/produtos/remover/{id}(id=${produto.id})}" hx-target="#main" hx-swap="outerHTML"
+                                       th:hx-confirm="${'Você vai remover o produto ' + produto.nome + '!'}"
+                                       class="text-blue-600 hover:text-blue-500 underline">Remover</a>
+                                </td>
+                            </tr>
+                            <tr th:if="${pagina.vazia}">
+                                <td colspan="10" class="px-6 py-4 text-center text-sm text-gray-500">Nenhum produto encontrado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lista mobile -->
+    <div class="flex md:hidden flex-col mt-10">
+        <div class="overflow-x-auto">
+            <div th:each="produto : ${pagina.conteudo}" class="mb-5 p-4 bg-white rounded shadow">
+                <p><strong>ID:</strong> <span th:text="${produto.id}"></span></p>
+                <p><strong>Nome:</strong> <span th:text="${produto.nome}"></span></p>
+                <p><strong>Categoria:</strong> <span th:text="${produto.categoria}"></span></p>
+                <p><strong>Tipo:</strong> <span th:text="${produto.tipo}"></span></p>
+                <p><strong>Preço Custo:</strong> R$ <span th:text="${produto.precoCustoFormatado}"></span></p>
+                <p><strong>Preço Venda:</strong> R$ <span th:text="${produto.precoVendaFormatado}"></span></p>
+                <p><strong>Estoque:</strong> <span th:text="${produto.estoque}"></span></p>
+                <p><strong>Fornecedor:</strong> <span th:text="${produto.fornecedor}"></span></p>
+                <div class="mt-2">
+                    <a th:hx-get="@{/produtos/alterar/{id}(id=${produto.id})}" hx-target="#main" hx-swap="outerHTML"
+                       class="text-blue-600 hover:text-blue-500 underline mr-3">Alterar</a>
+                    <a th:hx-get="@{/produtos/remover/{id}(id=${produto.id})}" hx-target="#main" hx-swap="outerHTML"
+                       th:hx-confirm="${'Você vai remover o produto ' + produto.nome + '!'}"
+                       class="text-blue-600 hover:text-blue-500 underline">Remover</a>
+                </div>
+            </div>
+            <div th:if="${pagina.vazia}" class="text-center text-gray-500">Nenhum produto encontrado</div>
+        </div>
+    </div>
+
+    <!-- Paginação -->
+    <div th:replace="~{layout/fragments/paginacao :: paginacao(${pagina})}"></div>
+
+</main>
+</body>
+</html>

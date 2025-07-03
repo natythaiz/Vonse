@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Listar Clientes</title>
+</head>
+
+<body>
+    <!-- conteudo principal -->
+    <main layout:fragment="conteudo" th:fragment="tabela" id="main" class="flex flex-col align-middle w-full m-10">
+        <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Clientes</h2>
+
+        <!-- Tabela para desktop -->
+        <div class="hidden md:flex flex-col mt-10">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <div class="border rounded-xl overflow-hidden shadow">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <div th:replace="~{layout/fragments/paginacao :: coluna(${pagina}, 'id', 'ID', '')}"></div>
+                                    <div th:replace="~{layout/fragments/paginacao :: coluna(${pagina}, 'nome', 'Nome', '')}"></div>
+                                    <div th:replace="~{layout/fragments/paginacao :: coluna(${pagina}, 'contato', 'Contato', '')}"></div>
+                                    <div th:replace="~{layout/fragments/paginacao :: coluna(${pagina}, 'data_cadastro', 'Data de Cadastro', '')}"></div>
+                                    <th scope="col" colspan="2" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="cliente : ${pagina.conteudo}" class="odd:bg-white even:bg-gray-100 hover:bg-gray-200">
+                                    <td th:text="${cliente.id}" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"></td>
+                                    <td th:text="${cliente.nome}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                    <td th:text="${cliente.contato}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                    <td th:text="${#temporals.format(cliente.data_cadastro, 'dd/MM/yyyy')}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
+                                    <td>
+                                        <a th:hx-get="@{/clientes/alterar/{id}(id=${cliente.id})}" hx-target="#main" hx-swap="outerHTML"
+                                           class="cursor-pointer text-blue-600 hover:text-blue-500 decoration-2 hover:underline focus:outline-hidden focus:underline">
+                                            Alterar
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a th:hx-get="@{/clientes/remover/{id}(id=${cliente.id})}" hx-target="#main" hx-swap="outerHTML"
+                                           th:hx-confirm="${'Você vai remover o cliente ' + cliente.nome + '!'}"
+                                           class="cursor-pointer text-blue-600 hover:text-blue-500 decoration-2 hover:underline focus:outline-hidden focus:underline">
+                                            Remover
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr th:if="${pagina.vazia}">
+                                    <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Nenhum cliente encontrado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <!-- Lista simplificada para mobile -->
+        <div class="flex md:hidden flex-col md:w-2/3 mt-10">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <div th:each="cliente : ${pagina.conteudo}" class="mb-5 p-4 bg-white rounded shadow">
+                        <p><strong>ID:</strong> <span th:text="${cliente.id}"></span></p>
+                        <p><strong>Nome:</strong> <span th:text="${cliente.nome}"></span></p>
+                        <p><strong>Contato:</strong> <span th:text="${cliente.contato}"></span></p>
+                        <p><strong>Data de Cadastro:</strong> <span th:text="${#temporals.format(cliente.data_cadastro, 'dd/MM/yyyy')}"></span></p>
+                        <div class="mt-2">
+                            <a th:hx-get="@{/clientes/alterar/{id}(id=${cliente.id})}" hx-target="#main" hx-swap="outerHTML"
+                               class="text-blue-600 hover:text-blue-500 decoration-2 hover:underline focus:outline-hidden focus:underline mr-3">
+                                Alterar
+                            </a>
+                            <a th:hx-get="@{/clientes/remover/{id}(id=${cliente.id})}" hx-target="#main" hx-swap="outerHTML"
+                               th:hx-confirm="${'Você vai remover o cliente ' + cliente.nome + '!'}"
+                               class="text-blue-600 hover:text-blue-500 decoration-2 hover:underline focus:outline-hidden focus:underline">
+                                Remover
+                            </a>
+                        </div>
+                    </div>
+                    <div th:if="${pagina.vazia}" class="text-center text-gray-500">Nenhum cliente encontrado</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paginação -->
+        <div th:replace="~{layout/fragments/paginacao :: paginacao(${pagina})}"></div>
+        
+    </main>
+    <!-- !conteudo principal -->
+</body>
+
+</html>

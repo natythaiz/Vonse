@@ -12,16 +12,19 @@ import web.controlevacinacao.repository.ProdutoRepository;
 public class ProdutoService {
 
     private final ProdutoRepository produtoRepository;
+    private static final double MARGEM_PADRAO = 1.7;
 
     public ProdutoService(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
 
     public void salvar(Produto produto) {
+        produto.setPrecoVenda(produto.getPrecoCusto() * MARGEM_PADRAO);
         produtoRepository.save(produto);
     }
 
     public void alterar(Produto produto) {
+        produto.setPrecoVenda(produto.getPrecoCusto() * MARGEM_PADRAO);
         produtoRepository.save(produto);
     }
 
