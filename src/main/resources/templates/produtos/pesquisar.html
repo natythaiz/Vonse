@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8" />
@@ -8,73 +9,113 @@
 </head>
 
 <body>
-<main layout:fragment="conteudo" th:fragment="formulario" id="main" class="flex flex-col align-middle w-full m-10">
+    <main layout:fragment="conteudo" th:fragment="formulario" id="main" class="flex flex-col align-middle w-full m-10">
 
-    <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Pesquisar Produtos</h2>
+        <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Pesquisar Produtos</h2>
 
-    <div class="md:flex flex-col mt-10">
-        <div class="overflow-x-auto">
-            <div class="min-w-full inline-block align-middle">
-                <form th:hx-get="@{/produtos/pesquisar}" hx-target="#main" hx-swap="outerHTML" class="md:flex flex-col w-2/3 mt-10 ms-16">
+        <div class="md:flex flex-col mt-10">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <form th:hx-get="@{/produtos/pesquisar}" hx-target="#main" hx-swap="outerHTML"
+                        class="md:flex flex-col w-2/3 mt-10 ms-16">
 
-                    <!-- ID -->
-                    <label for="id" class="block text-gray-700 font-medium mb-2">ID</label>
-                    <input type="number" name="id" id="id" class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                        <!-- ID -->
+                        <div class="flex flex-wrap justify-between gap-4">
+                            <!-- ID -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="id" class="block text-gray-700 font-medium mb-2">ID</label>
+                                <input type="number" name="id" id="id"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                            </div>
 
-                    <!-- Nome -->
-                    <label for="nome" class="mt-5 block text-gray-700 font-medium mb-2">Nome</label>
-                    <input type="text" name="nome" id="nome" class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                            <!-- Nome -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="nome" class="block text-gray-700 font-medium mb-2">Nome</label>
+                                <input type="text" name="nome" id="nome"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                            </div>
+                        </div>
 
-                    <!-- Categoria -->
-                    <label for="categoria" class="mt-5 block text-gray-700 font-medium mb-2">Categoria</label>
-                    <select name="categoria" id="categoria" class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
-                        <option value="">Selecione a categoria</option>
-                        <option value="FOLHEADOS">Folheados</option>
-                        <option value="SEMIJOIA">Semijoia</option>
-                        <option value="INOX">Aço Inox</option>
-                        <option value="ARTESANAL">Artesanal</option>
-                    </select>
+                        <div class="flex flex-wrap justify-between gap-4 mt-5">
+                            <!-- Categoria -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="categoria" class="block text-gray-700 font-medium mb-2">Categoria</label>
+                                <select name="categoria" id="categoria"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                                    <option value="">Selecione a categoria</option>
+                                    <option value="FOLHEADOS">Folheados</option>
+                                    <option value="SEMIJOIA">Semijoia</option>
+                                    <option value="INOX">Aço Inox</option>
+                                    <option value="ARTESANAL">Artesanal</option>
+                                </select>
+                            </div>
 
-                    <!-- Tipo -->
-                    <label for="tipo" class="mt-5 block text-gray-700 font-medium mb-2">Tipo</label>
-                    <select name="tipo" id="tipo" class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
-                        <option value="">Selecione o tipo</option>
-                        <option value="PULSEIRA">Pulseira</option>
-                        <option value="COLAR">Colar</option>
-                        <option value="CHOCKER">Chocker</option>
-                        <option value="BRINCO">Brinco</option>
-                        <option value="PIERCINGS">Piercings</option>
-                        <option value="TORNOZELEIRA">Tornozeleira</option>
-                        <option value="ANEL">Anel</option>
-                    </select>
+                            <!-- Tipo -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="tipo" class="block text-gray-700 font-medium mb-2">Tipo</label>
+                                <select name="tipo" id="tipo"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="PULSEIRA">Pulseira</option>
+                                    <option value="COLAR">Colar</option>
+                                    <option value="CHOCKER">Chocker</option>
+                                    <option value="BRINCO">Brinco</option>
+                                    <option value="PIERCINGS">Piercings</option>
+                                    <option value="TORNOZELEIRA">Tornozeleira</option>
+                                    <option value="ANEL">Anel</option>
+                                </select>
+                            </div>
+                        </div>
 
-                    <!-- Preço de Custo Min/Max -->
-                    <label for="minimoCusto" class="mt-5 block text-gray-700 font-medium mb-2">Preço de Custo Mínimo</label>
-                    <input type="number" step="0.01" name="minimoCusto" id="minimoCusto" class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
 
-                    <label for="maximoCusto" class="mt-5 block text-gray-700 font-medium mb-2">Preço de Custo Máximo</label>
-                    <input type="number" step="0.01" name="maximoCusto" id="maximoCusto" class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                        <div class="flex flex-wrap justify-between gap-4 mt-5">
+                            <!-- Preço de Custo Mínimo -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="minimoCusto" class="block text-gray-700 font-medium mb-2">Preço de Custo
+                                    Mínimo</label>
+                                <input type="number" step="0.01" name="minimoCusto" id="minimoCusto"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                            </div>
 
-                    <!-- Estoque -->
-                    <label for="estoque" class="mt-5 block text-gray-700 font-medium mb-2">Estoque</label>
-                    <input type="number" name="estoque" id="estoque" class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                            <!-- Preço de Custo Máximo -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="maximoCusto" class="block text-gray-700 font-medium mb-2">Preço de Custo
+                                    Máximo</label>
+                                <input type="number" step="0.01" name="maximoCusto" id="maximoCusto"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                            </div>
+                        </div>
 
-                    <!-- Fornecedor -->
-                    <label for="fornecedor" class="mt-5 block text-gray-700 font-medium mb-2">Fornecedor</label>
-                    <input type="text" name="fornecedor" id="fornecedor" class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                        <div class="flex flex-wrap justify-between gap-4 mt-5">
+                            <!-- Estoque -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="estoque" class="block text-gray-700 font-medium mb-2">Estoque</label>
+                                <input type="number" name="estoque" id="estoque"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                            </div>
 
-                    <!-- Botão -->
-                    <div class="mt-5">
-                        <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200">
-                            Pesquisar
-                        </button>
-                    </div>
+                            <!-- Fornecedor -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="fornecedor" class="block text-gray-700 font-medium mb-2">Fornecedor</label>
+                                <input type="text" name="fornecedor" id="fornecedor"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                            </div>
+                        </div>
 
-                </form>
+                        <!-- Botão -->
+                        <div class="mt-5">
+                            <button type="submit"
+                                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200">
+                                Pesquisar
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
-</main>
+    </main>
 </body>
+
 </html>

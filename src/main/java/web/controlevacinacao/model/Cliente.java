@@ -28,7 +28,7 @@ public class Cliente implements Serializable{
     private String nome;
     @NotBlank(message = "O contato é obrigatório")
     private String contato;
-    private LocalDate data_cadastro;
+    private LocalDate dataCadastro;
     @Enumerated(EnumType.STRING)
 	private Status status = Status.ATIVO;
 
@@ -54,10 +54,10 @@ public class Cliente implements Serializable{
         this.contato = contato;
     }
     public LocalDate getData_cadastro() {
-        return data_cadastro;
+        return dataCadastro;
     }
-    public void setData_cadastro(LocalDate data_cadastro) {
-        this.data_cadastro = data_cadastro;
+    public void setData_cadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
     public Status getStatus() {
 		return status;
@@ -72,7 +72,7 @@ public class Cliente implements Serializable{
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((nome == null) ? 0 : nome.hashCode());
         result = prime * result + ((contato == null) ? 0 : contato.hashCode());
-        result = prime * result + ((data_cadastro == null) ? 0 : data_cadastro.hashCode());
+        result = prime * result + ((dataCadastro == null) ? 0 : dataCadastro.hashCode());
         return result;
     }
     @Override
@@ -99,10 +99,10 @@ public class Cliente implements Serializable{
                 return false;
         } else if (!contato.equals(other.contato))
             return false;
-        if (data_cadastro == null) {
-            if (other.data_cadastro != null)
+        if (dataCadastro == null) {
+            if (other.dataCadastro != null)
                 return false;
-        } else if (!data_cadastro.equals(other.data_cadastro))
+        } else if (!dataCadastro.equals(other.dataCadastro))
             return false;
         return true;
     }

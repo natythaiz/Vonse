@@ -26,6 +26,7 @@ public class Produto implements Serializable {
     @SequenceGenerator(name = "gerador5", sequenceName = "vacina_codigo_seq", allocationSize = 1)
     @GeneratedValue(generator = "gerador5", strategy = GenerationType.SEQUENCE)
     private Long id;
+    @NotBlank(message = "O nome é obrigatório")
     private String nome;
     @NotNull(message = "A categoria é obrigatória")
     @Enumerated(EnumType.STRING)

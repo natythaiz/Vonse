@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Escolher Produto</title>
+</head>
+
+<body>
+    <main layout:fragment="conteudo" th:fragment="tabela" id="main" class="flex flex-col align-middle w-full m-10">
+
+        <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Escolher Produto</h2>
+
+        <div class="hidden md:flex flex-col mt-10">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <div class="border rounded-xl overflow-hidden shadow">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">ID</th>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nome
+                                    </th>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                        Categoria</th>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Tipo
+                                    </th>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Preço
+                                        Venda</th>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Estoque
+                                    </th>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Ação
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="produto : ${pagina.conteudo}"
+                                    class="odd:bg-white even:bg-gray-100 hover:bg-gray-200">
+                                    <td th:text="${produto.id}"
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">1</td>
+                                    <td th:text="${produto.nome}"
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Produto Exemplo</td>
+                                    <td th:text="${produto.categoria}"
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Semijoia</td>
+                                    <td th:text="${produto.tipo}"
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Pulseira</td>
+                                    <td th:text="${#numbers.formatDecimal(produto.precoVenda, 1, 'POINT', 2, 'POINT')}"
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">R$ 59,90</td>
+                                    <td th:text="${produto.estoque}"
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">10</td>
+                                    <td>
+                                        <a th:hx-get="@{/vendas/produto/{id}(id=${produto.id})}" hx-target="#main"
+                                            hx-swap="outerHTML"
+                                            class="cursor-pointer text-blue-600 hover:text-blue-500 decoration-2 hover:underline">
+                                            Escolher
+                                        </a>
+                                    </td>
+
+                                </tr>
+                                <tr th:if="${pagina.vazia}">
+                                    <td colspan="7" class="text-center py-4 text-sm text-gray-500">Nenhum produto
+                                        encontrado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex md:hidden flex-col md:w-2/3 mt-10">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <div th:each="produto : ${pagina.conteudo}" >
+                        <!-- ID -->
+                        <p th:text="'ID: ' + ${produto.id}" class="text-sm text-gray-700"></p>
+                        <!-- Nome -->
+                        <p th:text="'Nome: ' + ${produto.nome}" ></p>
+                        <!-- Categoria -->
+                        <p th:text="'Categoria: ' + ${produto.categoria}" ></p>
+                        <!-- Tipo -->
+                        <p th:text="'Tipo: ' + ${produto.tipo}"></p>
+                        <!-- Preço de Venda -->
+                        <p th:text="'Preço Venda: R$ ' + ${#numbers.formatDecimal(produto.precoVenda, 1, 'COMMA', 2, 'POINT')}"></p>
+                        <!-- Estoque -->
+                        <p th:text="'Estoque: ' + ${produto.estoque}"></p>
+                        <hr class="mt-5 mb-5" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div th:replace="~{layout/fragments/paginacao :: paginacao(${pagina})}"></div>
+
+    </main>
+</body>
+
+</html>
