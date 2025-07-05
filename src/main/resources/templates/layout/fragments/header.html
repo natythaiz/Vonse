@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
 <head>
   <meta charset="UTF-8" />
@@ -30,23 +30,20 @@
       </a>
 
       <!-- Usuário e login/logout -->
-      <div class="hidden items-center md:flex" th:fragment="usuariologinlogout" id="usuariologinlogout"
-        hx-swap-oob="true">
-        <!-- botao login -->
+      <div class="hidden items-center md:flex" th:fragment="usuariologinlogout" id="usuariologinlogout">
+        <div sec:authorize="isAuthenticated()" class="flex items-center">
+          <span class="text-sm text-teal-600 md:text-xl mr-4">
+            <span sec:authentication="principal.username"></span>
+          </span>
+          <form th:action="@{/logout}" method="post" style="display:inline;">
+            <button type="submit"
+              class="ml-2 rounded-lg border-2 border-teal-600 bg-teal-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600">
+              Logout
+            </button>
+          </form>
+        </div>
         <div sec:authorize="!isAuthenticated()">
-          <a th:hx-get="@{/login}" hx-target="#main" hx-swap="outerHTML" hx-push-url="true"
-            class="ml-5 rounded-lg border-2 border-teal-600 bg-teal-600  px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600">
-            Login </a>
-        </div>
-        <!-- nome do usuario -->
-        <div sec:authorize="isAuthenticated()">
-          <div class="text-sm text-teal-600 md:text-xl"><span sec:authentication="principal.username"></span></div>
-        </div>
-        <!-- botao logout -->
-        <div sec:authorize="isAuthenticated()">
-          <a th:hx-post="@{/logout}" hx-target="#main" hx-swap="outerHTML" hx-push-url="true"
-            class="ml-5 rounded-lg border-2 border-teal-600 bg-teal-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600">
-            Logout </a>
+          <!-- Não mostra nada quando não autenticado -->
         </div>
       </div>
 
@@ -71,13 +68,20 @@
     <!-- Mobile Menu Usuario -->
     <div id="menu-usuario"
       class="absolute bottom-0 left-0 top-0 hidden min-h-screen w-full flex-col items-end space-y-3 self-end bg-gray-800 py-1 pr-12 pt-20 text-lg text-gray-400">
-      <div class="text-gray-300">Grosbilda</div>
-      <a href="#"
+      <!-- autenticado: nome + logout -->
+      <div sec:authorize="isAuthenticated()" class="flex items-center space-x-2">
+        <span class="text-gray-300"><span sec:authentication="principal.username"></span></span>
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+          <button type="submit"
+            class="ml-2 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600">
+            Logout
+          </button>
+        </form>
+      </div>
+      <!-- não autenticado: login -->
+      <a th:href="@{/login}" sec:authorize="!isAuthenticated()"
         class="ml-5 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600">
         Login </a>
-      <a href="#"
-        class="ml-5 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600">
-        Logout </a>
     </div>
   </div>
 </body>
