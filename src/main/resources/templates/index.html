@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.thymeleaf.org">
 
 <head>
   <meta charset="UTF-8" />
@@ -7,20 +8,19 @@
   <title>Página Principal</title>
 </head>
 
-<body hx-ext="response-targets"
-      hx-target-5*="#main"
-      hx-target-4*="#main">
+<body hx-ext="response-targets" hx-target-5*="#main" hx-target-4*="#main">
   <!-- conteudo principal -->
-  <main layout:fragment="conteudo" id="main" class="flex flex-col align-middle justify-center w-full m-10">
-    <h1 class="text-2xl md:text-4xl text-center">Bem vindo ao Sistema de Controle de Vacinação</h1>
-    <img th:src="@{/images/ze-gotinha.jpg}" class="mt-10 mx-auto block" alt="Zé Gotinha" />
-  </main>
-  <!-- !conteudo principal -->
+  <main layout:fragment="conteudo" id="main" class="flex flex-col align-middle justify-center w-full m-5">
+    <h2 class="text-xl md:text-4xl text-left font-semibold text-teal-600">
+      <span th:text="${mesAtual}">MÊS</span>
+    </h2>
+    <h3 class="text-lg md:text-2xl text-left font-semibold text-gray-600 mt-2">
+      Total de vendas do mês: R$ <span th:text="${totalVendasMes}">0,00</span>
+    </h3>
 
-  <!-- Nao usamos
-	<th:block layout:fragment="scripts">
-		<script src="../static/js/index.js" th:src="@{/js/index.js}"></script>
-	</th:block> -->
+
+    <img th:src="@{/images/Gerenciamento_Vonse.png}" class="mt-10 mx-auto block" alt="Zé Gotinha" />
+  </main>
 </body>
 
 </html>

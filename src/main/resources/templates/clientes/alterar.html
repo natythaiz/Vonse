@@ -13,10 +13,10 @@
 
         <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Alterar Cliente</h2>
 
-        <div class="md:flex flex-col mt-10">
+        <div class="md:flex flex-col mt-5">
             <div class="overflow-x-auto">
                 <div class="min-w-full inline-block align-middle">
-                    <form th:hx-post="@{/clientes/alterar}" hx-target="#main" hx-swap="outerHTML" th:object="${cliente}" class="md:flex flex-col w-2/3 mt-10 ms-16">
+                    <form th:hx-post="@{/clientes/alterar}" hx-target="#main" hx-swap="outerHTML" th:object="${cliente}" class="md:flex flex-col w-2/3 ms-16">
                         
                         <!-- ID (disabled + hidden) -->
                         <label for="id" class="mt-5 block text-gray-700 font-medium mb-2">ID</label>

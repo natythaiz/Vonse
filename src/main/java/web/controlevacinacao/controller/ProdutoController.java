@@ -134,4 +134,13 @@ public class ProdutoController {
                 new NotificacaoSweetAlert2("Produto removido com sucesso!", TipoNotificaoSweetAlert2.SUCCESS, 4000));
         return "redirect:/produtos/abrirpesquisa";
     }
+
+    @GetMapping("/produtos/listar")
+    public String listarProdutos(Model model, Pageable pageable, HttpServletRequest request) {
+        Page<Produto> pagina = produtoRepository.findAll(pageable);
+        PageWrapper<Produto> paginaWrapper = new PageWrapper<>(pagina, request);
+        model.addAttribute("pagina", paginaWrapper);
+        return "produtos/listar";
+    }
+
 }

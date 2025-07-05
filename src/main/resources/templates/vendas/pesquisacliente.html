@@ -1,31 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>Pesquisar Cliente</title>
 </head>
+
 <body>
     <!-- Conteúdo principal -->
     <main layout:fragment="conteudo" th:fragment="formulario" id="main" class="flex flex-col align-middle w-full m-10">
         <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Pesquisar Cliente</h2>
 
-        <div class="md:flex flex-col mt-10">
+        <div class="md:flex flex-col mt-5">
             <div class="overflow-x-auto">
                 <div class="min-w-full inline-block align-middle">
-                    <form th:hx-get="@{/vendas/pesquisarcliente}" hx-target="#main" hx-swap="outerHTML" class="md:flex flex-col w-2/3 mt-10 ms-16">
+                    <form th:hx-get="@{/vendas/pesquisarcliente}" hx-target="#main" hx-swap="outerHTML"
+                        class="md:flex flex-col w-2/3 mt-5 ms-16">
 
-                        <label for="nome" class="block text-gray-700 font-medium mb-2">Nome</label>
-                        <input type="text" name="nome" id="nome" class="w-1/2 py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500" />
+                        <label for="id" class="block text-gray-700 font-medium mb-2">ID</label>
+                        <input type="number" name="id" id="id"
+                            class="w-1/2 py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" />
 
-                        <label for="contato" class="mt-5 block text-gray-700 font-medium mb-2">Contato</label>
-                        <input type="text" name="contato" id="contato" class="w-1/2 py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500" />
+                        <div class="flex flex-wrap justify-between gap-4">
+                            <!-- Nome -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="nome" class="block text-gray-700 font-medium mb-2">Nome</label>
+                                <input type="text" name="nome" id="nome"
+                                    class="w-full py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" />
+                            </div>
 
-                        <div th:replace="~{layout/fragments/forms :: inputdatasimples('Data de Cadastro a partir de', 'minDataCadastro')}"></div>
-                        <div th:replace="~{layout/fragments/forms :: inputdatasimples('Data de Cadastro até', 'maxDataCadastro')}"></div>
+                            <!-- Contato -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="contato" class="block text-gray-700 font-medium mb-2">Contato</label>
+                                <input type="text" name="contato" id="contato"
+                                    class="w-full py-3 px-4 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" />
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap justify-between gap-4">
+                            <!-- Data de Cadastro a partir de -->
+                            <div class="md:flex-1 w-1/2">
+                                <div
+                                    th:replace="~{layout/fragments/forms :: inputdatasimples('Data de Cadastro a partir de', 'minDataCadastro')}">
+                                </div>
+                            </div>
+
+                            <!-- Data de Cadastro até -->
+                            <div class="md:flex-1 w-1/2">
+                                <div
+                                    th:replace="~{layout/fragments/forms :: inputdatasimples('Data de Cadastro até', 'maxDataCadastro')}">
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="mt-5">
-                            <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200">
+                            <button type="submit"
+                                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200">
                                 Pesquisar
                             </button>
                         </div>
@@ -42,4 +74,5 @@
     </main>
     <!-- !Conteúdo principal -->
 </body>
+
 </html>

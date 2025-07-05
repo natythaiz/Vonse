@@ -18,7 +18,7 @@
             <div class="overflow-x-auto">
                 <div class="min-w-full inline-block align-middle">
                     <form th:hx-post="@{/produtos/cadastrar}" hx-target="#main" hx-swap="outerHTML"
-                        th:object="${produto}" class="md:flex flex-col w-2/3 mt-10 ms-16">
+                        th:object="${produto}" class="md:flex flex-col w-2/3 mt-4 ms-16">
 
                         <!-- Nome -->
                         <div th:replace="~{layout/fragments/forms :: inputtext('Nome', 'nome')}"></div>

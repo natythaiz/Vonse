@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8" />
@@ -13,19 +14,31 @@
 
         <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Cadastrar Cliente</h2>
 
-        <div class="md:flex flex-col mt-10">
+        <div class="md:flex flex-col mt-5">
             <div class="overflow-x-auto">
-                <div class="min-w-full inline-block align-middle">
-                    <form th:hx-post="@{/clientes/cadastrar}" hx-target="#main" hx-swap="outerHTML" th:object="${cliente}" class="md:flex flex-col w-2/3 mt-10 ms-16">
+                <div class="min-w-full w-1/2 inline-block align-middle">
+                    <form th:hx-post="@{/clientes/cadastrar}" hx-target="#main" hx-swap="outerHTML"
+                        th:object="${cliente}" class="md:flex flex-col w-2/3 ms-16">
 
                         <div th:replace="~{layout/fragments/forms :: inputtext('Nome', 'nome')}"></div>
 
-                        <div th:replace="~{layout/fragments/forms :: inputtext('Contato', 'contato')}"></div>
+                        <div class="flex flex-wrap justify-between gap-4">
+                            <!-- Contato -->
+                            <div class="md:flex-1 md:1/2">
+                                <div th:replace="~{layout/fragments/forms :: inputtext('Contato', 'contato')}"></div>
+                            </div>
 
-                        <div th:replace="~{layout/fragments/forms :: inputdata('Data de Cadastro', 'data_cadastro')}"></div>
+                            <!-- Data de Cadastro -->
+                            <div class="md:flex-1 md:1/2">
+                                <div
+                                    th:replace="~{layout/fragments/forms :: inputdata('Data de Cadastro', 'data_cadastro')}">
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="mt-5">
-                            <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none">Cadastrar</button>
+                            <button type="submit"
+                                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none">Cadastrar</button>
                         </div>
 
                     </form>
