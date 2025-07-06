@@ -172,7 +172,21 @@ public class VendaController {
     }
 
     @HxRequest
-    @PostMapping("/vendas/cadastrar")
+    @GetMapping("/vendas/cadastrarFinal")
+    public String mostrarTelaCadastro(HttpSession sessao, Model model) {
+        Venda venda = (Venda) sessao.getAttribute("venda");
+
+        if (venda == null || venda.getItensVendidos().isEmpty()) {
+            model.addAttribute("mensagem", "Não é possível finalizar uma venda sem itens.");
+            return "mensagem :: texto";
+        }
+
+        model.addAttribute("venda", venda);
+        return "vendas/cadastrarFinal :: formulario";
+    }
+
+    @HxRequest
+    @PostMapping("/vendas/finalizar")
     public String finalizarCadastro(HttpSession sessao, RedirectAttributes attributes) {
         Venda venda = (Venda) sessao.getAttribute("venda");
         if (venda != null && !venda.getItensVendidos().isEmpty()) {

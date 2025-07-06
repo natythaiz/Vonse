@@ -73,17 +73,19 @@
         <div class="flex md:hidden flex-col md:w-2/3 mt-10">
             <div class="overflow-x-auto">
                 <div class="min-w-full inline-block align-middle">
-                    <div th:each="produto : ${pagina.conteudo}" >
+                    <div th:each="produto : ${pagina.conteudo}">
                         <!-- ID -->
                         <p th:text="'ID: ' + ${produto.id}" class="text-sm text-gray-700"></p>
                         <!-- Nome -->
-                        <p th:text="'Nome: ' + ${produto.nome}" ></p>
+                        <p th:text="'Nome: ' + ${produto.nome}"></p>
                         <!-- Categoria -->
-                        <p th:text="'Categoria: ' + ${produto.categoria}" ></p>
+                        <p th:text="'Categoria: ' + ${produto.categoria}"></p>
                         <!-- Tipo -->
                         <p th:text="'Tipo: ' + ${produto.tipo}"></p>
                         <!-- Preço de Venda -->
-                        <p th:text="'Preço Venda: R$ ' + ${#numbers.formatDecimal(produto.precoVenda, 1, 'COMMA', 2, 'POINT')}"></p>
+                        <p
+                            th:text="'Preço Venda: R$ ' + ${#numbers.formatDecimal(produto.precoVenda, 1, 'COMMA', 2, 'POINT')}">
+                        </p>
                         <!-- Estoque -->
                         <p th:text="'Estoque: ' + ${produto.estoque}"></p>
                         <hr class="mt-5 mb-5" />
@@ -91,6 +93,11 @@
                 </div>
             </div>
         </div>
+
+        <a th:hx-get="@{/vendas/cadastrarFinal}"
+            class="inline-block px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded hover:bg-teal-700 transition">
+            Finalizar Venda
+        </a>
 
 
         <div th:replace="~{layout/fragments/paginacao :: paginacao(${pagina})}"></div>

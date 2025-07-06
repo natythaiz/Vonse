@@ -73,14 +73,14 @@
         <span class="text-gray-300"><span sec:authentication="principal.username"></span></span>
         <form th:action="@{/logout}" method="post" style="display:inline;">
           <button type="submit"
-            class="ml-2 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600">
+            class="ml-2 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-teal-800">
             Logout
           </button>
         </form>
       </div>
       <!-- não autenticado: login -->
       <a th:href="@{/login}" sec:authorize="!isAuthenticated()"
-        class="ml-5 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-gray-600">
+        class="ml-5 rounded-lg border-2 border-gray-600 bg-gray-600 px-8 py-2 text-white shadow-md hover:bg-white hover:text-teal-800">
         Login </a>
     </div>
   </div>
