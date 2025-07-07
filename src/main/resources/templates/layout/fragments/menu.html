@@ -10,93 +10,56 @@
 
 <body>
   <nav th:fragment="menu" class="mt-10">
-    <!-- 1o Item Menu -->
-     <div x-data="{ open: false }">
+    <!-- 1o Item Menu: Produtos -->
+    <div x-data="{ open: false }">
       <button
         th:replace="~{layout/fragments/menu-item-button :: menu-item-button('Produtos', ~{::#produtos-icon})}"></button>
-
-      <!-- Opcoes do 1o Item Menu -->
       <div x-show="open" class="space-y-4 ps-10">
-        <!-- 1a Opcao -->
-        <div
-          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Cadastrar', @{/produtos/cadastrar}, ~{::#cadastrar-icon})}">
-        </div>
-        <!-- 2a Opcao -->
-        <div
-          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Pesquisar', @{/produtos/abrirpesquisa}, ~{::#pesquisar-icon})}">
-        </div>
+        <div sec:authorize="hasRole('ADMIN')"
+          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Cadastrar', @{/produtos/cadastrar}, ~{::#cadastrar-icon})}"></div>
+        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Pesquisar', @{/produtos/abrirpesquisa}, ~{::#pesquisar-icon})}"></div>
       </div>
     </div>
 
-    <!-- 2o Item Menu -->
-     <div x-data="{ open: false }">
+    <!-- 2o Item Menu: Cliente -->
+    <div x-data="{ open: false }">
       <button
         th:replace="~{layout/fragments/menu-item-button :: menu-item-button('Cliente', ~{::#pessoa-icon})}"></button>
-
-      <!-- Opcoes do 2o Item Menu -->
       <div x-show="open" class="space-y-4 ps-10">
-        <!-- 1a Opcao -->
-        <div
-          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Cadastrar', @{/clientes/cadastrar}, ~{::#cadastrar-icon})}">
-        </div>
-        <!-- 2a Opcao -->
-        <div
-          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Pesquisar', @{/clientes/abrirpesquisa}, ~{::#pesquisar-icon})}">
-        </div>
+        <div sec:authorize="hasRole('ADMIN')"
+          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Cadastrar', @{/clientes/cadastrar}, ~{::#cadastrar-icon})}"></div>
+        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Pesquisar', @{/clientes/abrirpesquisa}, ~{::#pesquisar-icon})}"></div>
       </div>
     </div>
 
-
-    <!-- 3o Item Menu -->
+    <!-- 3o Item Menu: Vendas -->
     <div x-data="{ open: false }">
       <button th:replace="~{layout/fragments/menu-item-button :: menu-item-button('Vendas', ~{::#lote-icon})}"></button>
-
-      <!-- Opcoes do 3o Item Menu -->
       <div x-show="open" class="space-y-4 ps-10">
-        <!-- 1a Opcao -->
-        <div
-          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Cadastrar', @{/vendas/cadastrar}, ~{::#cadastrar-icon})}">
-        </div>
-        <!-- 2a Opcao -->
-        <div
-          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Pesquisar', @{/lotes/abrirpesquisa}, ~{::#pesquisar-icon})}">
-        </div>
+        <div sec:authorize="hasRole('ADMIN')"
+          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Cadastrar', @{/vendas/cadastrar}, ~{::#cadastrar-icon})}"></div>
+        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Pesquisar', @{/vendas/abrirpesquisa}, ~{::#pesquisar-icon})}"></div>
       </div>
     </div>
 
-    <!-- 4o Item Menu -->
+    <!-- 4o Item Menu: Aplicação (sem restrição) -->
     <div x-data="{ open: false }">
       <button
         th:replace="~{layout/fragments/menu-item-button :: menu-item-button('Aplicação', ~{::#aplicacao-icon})}"></button>
-
-      <!-- Opcoes do 4o Item Menu -->
       <div x-show="open" class="space-y-4 ps-10">
-        <!-- 1a Opcao -->
-        <div
-          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Cadastrar', @{/aplicacoes/cadastrar}, ~{::#cadastrar-icon})}">
-        </div>
-        <!-- 2a Opcao -->
-        <div
-          th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Pesquisar', @{/aplicacoes/abrirpesquisa}, ~{::#pesquisar-icon})}">
-        </div>
+        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Cadastrar', @{/aplicacoes/cadastrar}, ~{::#cadastrar-icon})}"></div>
+        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Pesquisar', @{/aplicacoes/abrirpesquisa}, ~{::#pesquisar-icon})}"></div>
       </div>
     </div>
 
-    <!-- 5o Item Menu -->
-    <div x-data="{ open: false }">
+    <!-- 5o Item Menu: Relatórios (apenas ADMIN) -->
+    <div x-data="{ open: false }" sec:authorize="hasRole('ADMIN')">
       <button
         th:replace="~{layout/fragments/menu-item-button :: menu-item-button('Relatórios', ~{::#relatorios-icon})}"></button>
-
-      <!-- Opcoes do 5o Item Menu -->
       <div x-show="open" class="space-y-4 ps-10">
-        <!-- 1a Opcao -->
-        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Vacinas', '/', ~{::#pdf-icon})}">
-        </div>
-        <!-- 2a Opcao -->
+        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Vacinas', '/', ~{::#pdf-icon})}"></div>
         <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Lotes', '/', ~{::#pdf-icon})}"></div>
-        <!-- 3a Opcao -->
-        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Aplicações', '/', ~{::#pdf-icon})}">
-        </div>
+        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Aplicações', '/', ~{::#pdf-icon})}"></div>
       </div>
     </div>
 
