@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Vendas</title>
+</head>
+
+<body>
+    <main layout:fragment="conteudo" th:fragment="tabela" id="main" class="flex flex-col align-middle w-full m-10">
+
+        <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Vendas</h2>
+
+        <!-- Tabela Desktop -->
+        <div class="hidden md:flex flex-col mt-10">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <div class="border rounded-xl overflow-hidden shadow">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">ID</th>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Data
+                                    </th>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Cliente
+                                    </th>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Qtd.
+                                        Itens</th>
+                                    <th class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Valor
+                                        Total</th>
+                                    <th colspan="2"
+                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Ação
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="venda : ${pagina.conteudo}"
+                                    class="odd:bg-white even:bg-gray-100 hover:bg-gray-200">
+                                    <td th:text="${venda.id}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                                    </td>
+                                    <td th:text="${{venda.data}}"
+                                        class="px-6 py-4 text-sm text-gray-800"></td>
+                                    <td th:text="${venda.cliente.nome}" class="px-6 py-4 text-sm text-gray-800"></td>
+                                    <td th:text="${venda.quantidadeTotalItens}" class="px-6 py-4 text-sm text-gray-800">
+                                    </td>
+                                    <td th:text="'R$ ' + ${#numbers.formatDecimal(venda.valorTotal, 1, 'POINT', 2, 'POINT')}"
+                                        class="px-6 py-4 text-sm text-gray-800"></td>
+                                    <td>
+                                        <a th:hx-get="@{/vendas/alterar/{id}(id=${venda.id})}" hx-target="#main"
+                                            hx-swap="outerHTML"
+                                            class="text-blue-600 hover:text-blue-500 underline">Alterar</a>
+                                    </td>
+                                    <td>
+                                        <a th:hx-get="@{/vendas/remover/{id}(id=${venda.id})}" hx-target="#main"
+                                            hx-swap="outerHTML"
+                                            th:hx-confirm="${'Você deseja remover a venda de ' + venda.cliente.nome + '?'}"
+                                            class="text-red-600 hover:text-red-400 underline">Remover</a>
+                                    </td>
+                                </tr>
+                                <tr th:if="${pagina.vazia}">
+                                    <td colspan="7" class="px-6 py-4 text-center text-sm text-gray-500">Nenhuma venda
+                                        encontrada</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista Mobile -->
+        <div class="flex md:hidden flex-col mt-10">
+            <div class="overflow-x-auto">
+                <div th:each="venda : ${pagina.conteudo}" class="mb-5 p-4 bg-white rounded shadow">
+                    <p><strong>ID:</strong> <span th:text="${venda.id}"></span></p>
+                    <p><strong>Data:</strong> <span th:text="${#temporals.format(venda.data, 'dd/MM/yyyy')}"></span></p>
+                    <p><strong>Cliente:</strong> <span th:text="${venda.cliente.nome}"></span></p>
+                    <p><strong>Itens:</strong> <span th:text="${venda.quantidadeTotalItens}"></span></p>
+                    <p><strong>Valor Total:</strong> R$ <span
+                            th:text="${#numbers.formatDecimal(venda.valorTotal, 1, 'POINT', 2, 'POINT')}"></span></p>
+                    <div class="mt-2">
+                        <a th:hx-get="@{/vendas/alterar/{id}(id=${venda.id})}" hx-target="#main" hx-swap="outerHTML"
+                            class="text-blue-600 hover:text-blue-500 underline mr-3">Alterar</a>
+                        <a th:hx-get="@{/vendas/remover/{id}(id=${venda.id})}" hx-target="#main" hx-swap="outerHTML"
+                            th:hx-confirm="${'Você deseja remover a venda de ' + venda.cliente.nome + '?'}"
+                            class="text-red-600 hover:text-red-400 underline">Remover</a>
+                    </div>
+                </div>
+                <div th:if="${pagina.vazia}" class="text-center text-gray-500">Nenhuma venda encontrada</div>
+            </div>
+        </div>
+
+        <!-- Paginação -->
+        <div th:replace="~{layout/fragments/paginacao :: paginacao(${pagina})}"></div>
+
+    </main>
+</body>
+
+</html>

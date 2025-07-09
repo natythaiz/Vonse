@@ -42,17 +42,7 @@
       </div>
     </div>
 
-    <!-- 4o Item Menu: Aplicação (sem restrição) -->
-    <div x-data="{ open: false }">
-      <button
-        th:replace="~{layout/fragments/menu-item-button :: menu-item-button('Aplicação', ~{::#aplicacao-icon})}"></button>
-      <div x-show="open" class="space-y-4 ps-10">
-        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Cadastrar', @{/aplicacoes/cadastrar}, ~{::#cadastrar-icon})}"></div>
-        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Pesquisar', @{/aplicacoes/abrirpesquisa}, ~{::#pesquisar-icon})}"></div>
-      </div>
-    </div>
-
-    <!-- 5o Item Menu: Relatórios (apenas ADMIN) -->
+    <!-- 4o Item Menu: Relatórios (apenas ADMIN) -->
     <div x-data="{ open: false }" sec:authorize="hasRole('ADMIN')">
       <button
         th:replace="~{layout/fragments/menu-item-button :: menu-item-button('Relatórios', ~{::#relatorios-icon})}"></button>

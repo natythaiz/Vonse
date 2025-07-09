@@ -22,9 +22,17 @@ public class VendaQueriesImpl implements VendaQueries {
     private EntityManager em;
 
     @Override
+	public Venda buscarCompletoCodigo(Long id) {
+        String query = "select distinct v from Venda v join fetch v.cliente join fetch v.itensVendidos i join fetch i.produto where v.status = 'ATIVO' and v.id = :id";
+		TypedQuery<Venda> typedQuery = em.createQuery(query, Venda.class);
+		typedQuery.setParameter("id", id);
+		return typedQuery.getSingleResult();
+	}
+
+    @Override
     public Page<Venda> pesquisar(VendaFilter filtro, Pageable pageable) {
 
-        StringBuilder queryVendas = new StringBuilder("select distinct v from Venda v join v.cliente c join v.itens i join i.produto p");
+        StringBuilder queryVendas = new StringBuilder("select distinct v from Venda v join fetch v.cliente c join fetch v.itensVendidos i join fetch i.produto p");
         StringBuilder condicoes = new StringBuilder();
         Map<String, Object> parametros = new HashMap<>();
 
@@ -87,14 +95,14 @@ public class VendaQueriesImpl implements VendaQueries {
             condicao = true;
         }
 
-        if (filtro.getMinValorTotal() > 0) {
+        if (filtro.getMinValorTotal() != null) {
             PaginacaoUtil.fazerLigacaoCondicoes(condicoes, condicao);
             condicoes.append("v.valorTotal >= :minValorTotal");
             parametros.put("minValorTotal", filtro.getMinValorTotal());
             condicao = true;
         }
 
-        if (filtro.getMaxValorTotal() > 0) {
+        if (filtro.getMaxValorTotal() != null) {
             PaginacaoUtil.fazerLigacaoCondicoes(condicoes, condicao);
             condicoes.append("v.valorTotal <= :maxValorTotal");
             parametros.put("maxValorTotal", filtro.getMaxValorTotal());

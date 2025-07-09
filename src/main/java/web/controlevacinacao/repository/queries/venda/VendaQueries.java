@@ -10,4 +10,5 @@ public interface VendaQueries {
 
 	Page<Venda> pesquisar(VendaFilter filtro, Pageable pageable);
 	
+	Venda buscarCompletoCodigo(Long codigo);
 }

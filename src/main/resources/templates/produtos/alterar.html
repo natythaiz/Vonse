@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.thymeleaf.org">
+<html lang="pt-BR" layout:decorate="~{layout/layoutpadrao}" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
@@ -7,70 +9,113 @@
 </head>
 
 <body>
-<main layout:fragment="conteudo" th:fragment="formulario" id="main" class="flex flex-col align-middle w-full m-10">
+    <main layout:fragment="conteudo" th:fragment="formulario" id="main" class="flex flex-col align-middle w-full m-10">
 
-    <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Alterar Produto</h2>
+        <h2 class="text-xl font-semibold text-gray-400 md:text-3xl">Alterar Produto</h2>
 
-    <div class="md:flex flex-col mt-10">
-        <div class="overflow-x-auto">
-            <div class="min-w-full inline-block align-middle">
-                <form th:hx-post="@{/produtos/alterar}" hx-target="#main" hx-swap="outerHTML" th:object="${produto}" class="md:flex flex-col w-2/3 mt-10 ms-16">
+        <div class="md:flex flex-col mt-5">
+            <div class="overflow-x-auto">
+                <div class="min-w-full inline-block align-middle">
+                    <form th:hx-post="@{/produtos/alterar}" hx-target="#main" hx-swap="outerHTML" th:object="${produto}"
+                        class="md:flex flex-col w-2/3 mt-5 ms-16">
 
-                    <!-- ID (disabled) -->
-                    <label for="id" class="mt-5 block text-gray-700 font-medium mb-2">ID</label>
-                    <input type="number" th:field="*{id}" disabled class="w-1/2 py-3 px-4 text-gray-500 border-gray-300 rounded-lg disabled:opacity-50 disabled:pointer-events-none" />
-                    <input type="hidden" th:field="*{id}" />
+                        <div class="flex flex-wrap justify-between gap-4 mt-2">
+                            <!-- ID (disabled) -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="id" class="block text-gray-700 font-medium mb-2">ID</label>
+                                <input type="number" th:field="*{id}" disabled
+                                    class="w-full py-3 px-4 text-gray-500 border-gray-300 rounded-lg disabled:opacity-50 disabled:pointer-events-none" />
+                                <input type="hidden" th:field="*{id}" />
+                            </div>
 
-                    <!-- Nome -->
-                    <div th:replace="~{layout/fragments/forms :: inputtext('Nome', 'nome')}"></div>
+                            <!-- Nome -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <div th:replace="~{layout/fragments/forms :: inputtext('Nome', 'nome')}"></div>
+                            </div>
+                        </div>
 
-                    <!-- Categoria -->
-                    <label for="categoria" class="mt-5 block text-gray-700 font-medium mb-2">Categoria</label>
-                    <select th:field="*{categoria}" id="categoria" name="categoria" class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
-                        <option value="">Selecione a categoria</option>
-                        <option value="FOLHEADOS">Folheados</option>
-                        <option value="SEMIJOIA">Semijoia</option>
-                        <option value="INOX">Inox</option>
-                        <option value="ARTESANAL">Artesanal</option>
-                    </select>
+                        <div class="flex flex-wrap justify-between gap-4">
+                            <!-- Categoria -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="categoria" class="block text-gray-700 font-medium mb-2">Categoria</label>
+                                <select th:field="*{categoria}" id="categoria" name="categoria"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                                    <option value="">Selecione a categoria</option>
+                                    <option value="FOLHEADOS">Folheados</option>
+                                    <option value="SEMIJOIA">Semijoia</option>
+                                    <option value="INOX">Inox</option>
+                                    <option value="ARTESANAL">Artesanal</option>
+                                </select>
+                            </div>
 
-                    <!-- Tipo -->
-                    <label for="tipo" class="mt-5 block text-gray-700 font-medium mb-2">Tipo</label>
-                    <select th:field="*{tipo}" id="tipo" name="tipo" class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
-                        <option value="">Selecione o tipo</option>
-                        <option value="PULSEIRA">Pulseira</option>
-                        <option value="COLAR">Colar</option>
-                        <option value="CHOCKER">Chocker</option>
-                        <option value="BRINCO">Brinco</option>
-                        <option value="PIERCINGS">Piercings</option>
-                        <option value="TORNOZELEIRA">Tornozeleira</option>
-                        <option value="ANEL">Anel</option>
-                    </select>
+                            <!-- Tipo -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="tipo" class="block text-gray-700 font-medium mb-2">Tipo</label>
+                                <select th:field="*{tipo}" id="tipo" name="tipo"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500">
+                                    <option value="">Selecione o tipo</option>
+                                    <option value="PULSEIRA">Pulseira</option>
+                                    <option value="COLAR">Colar</option>
+                                    <option value="CHOCKER">Chocker</option>
+                                    <option value="BRINCO">Brinco</option>
+                                    <option value="PIERCINGS">Piercings</option>
+                                    <option value="TORNOZELEIRA">Tornozeleira</option>
+                                    <option value="ANEL">Anel</option>
+                                </select>
+                            </div>
+                        </div>
 
-                    <!-- Preço de Custo -->
-                    <div th:replace="~{layout/fragments/forms :: inputtext('Preço de Custo', 'precoCusto')}"></div>
 
-                    <!-- Estoque -->
-                    <div th:replace="~{layout/fragments/forms :: inputtext('Estoque', 'estoque')}"></div>
+                        <!-- Preço de Custo e Estoque -->
+                        <div class="flex flex-wrap justify-between gap-4">
+                            <!-- Preço de Custo -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <div
+                                    th:replace="~{layout/fragments/forms :: inputtext('Preço de Custo', 'precoCusto')}">
+                                </div>
+                            </div>
 
-                    <!-- Descrição -->
-                    <div th:replace="~{layout/fragments/forms :: inputtext('Descrição', 'descricao')}"></div>
+                            <!-- Estoque -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <div th:replace="~{layout/fragments/forms :: inputtext('Estoque', 'estoque')}"></div>
+                            </div>
+                        </div>
 
-                    <!-- Fornecedor -->
-                    <div th:replace="~{layout/fragments/forms :: inputtext('Fornecedor', 'fornecedor')}"></div>
+                        <!-- Descrição e Fornecedor -->
+                        <div class="flex flex-wrap justify-between gap-4">
+                            <!-- Descrição -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <div th:replace="~{layout/fragments/forms :: inputtext('Descrição', 'descricao')}">
+                                </div>
+                            </div>
 
-                    <!-- Botão -->
-                    <div class="mt-5">
-                        <button type="submit" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200">
-                            Alterar
-                        </button>
-                    </div>
+                            <!-- Fornecedor -->
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <div th:replace="~{layout/fragments/forms :: inputtext('Fornecedor', 'fornecedor')}">
+                                </div>
+                            </div>
+                        </div>
 
-                </form>
+                        <!-- Botão -->
+                        <div class="mt-5">
+                            <button type="submit"
+                                class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-200 focus:outline-none focus:bg-blue-200">
+                                Alterar
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
-</main>
+        <div th:if="${notificacao != null}" th:object="${notificacao}">
+            <input type="hidden" id="mensagemSA2" th:value="*{mensagem}">
+            <input type="hidden" id="tipoSA2" th:value="*{tipo}">
+            <input type="hidden" id="intervaloSA2" th:value="*{intervalo}">
+        </div>
+
+    </main>
 </body>
+
 </html>

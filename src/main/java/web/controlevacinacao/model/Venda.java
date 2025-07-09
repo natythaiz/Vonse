@@ -76,6 +76,14 @@ public class Venda implements Serializable{
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+
+    public int getQuantidadeTotalItens() {
+        if (itensVendidos == null) return 0;
+        return itensVendidos.stream()
+            .mapToInt(item -> item.getQuantidade() != null ? item.getQuantidade().intValue() : 0)
+            .sum();
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

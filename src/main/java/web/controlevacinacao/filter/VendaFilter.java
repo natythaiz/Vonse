@@ -8,8 +8,8 @@ public class VendaFilter {
     private LocalDate maxData;
     private String nomeCliente;
     private String nomeProduto;
-    private double maxValorTotal;
-    private double minValorTotal;
+    private Double maxValorTotal;
+    private Double minValorTotal;
 
     public Long getId() {
         return id;
@@ -41,16 +41,16 @@ public class VendaFilter {
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
     }
-    public double getMaxValorTotal() {
+    public Double getMaxValorTotal() {
         return maxValorTotal;
     }
-    public void setMaxValorTotal(double maxValorTotal) {
+    public void setMaxValorTotal(Double maxValorTotal) {
         this.maxValorTotal = maxValorTotal;
     }
-    public double getMinValorTotal() {
+    public Double getMinValorTotal() {
         return minValorTotal;
     }
-    public void setMinValorTotal(double minValorTotal) {
+    public void setMinValorTotal(Double minValorTotal) {
         this.minValorTotal = minValorTotal;
     }
     @Override

@@ -1,6 +1,5 @@
 package web.controlevacinacao.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +17,6 @@ public class VendaService {
     private final VendaRepository vendaRepository;
     private ProdutoRepository produtoRepository;
 
-    @Autowired
     public VendaService(VendaRepository vendaRepository, ProdutoRepository produtoRepository) {
         this.vendaRepository = vendaRepository;
         this.produtoRepository = produtoRepository;

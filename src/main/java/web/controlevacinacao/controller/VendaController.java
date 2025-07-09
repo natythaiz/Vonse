@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
@@ -19,12 +20,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import io.github.wimdeblauwe.htmx.spring.boot.mvc.HxLocation;
 import io.github.wimdeblauwe.htmx.spring.boot.mvc.HxRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import web.controlevacinacao.filter.ClienteFilter;
 import web.controlevacinacao.filter.ProdutoFilter;
+import web.controlevacinacao.filter.VendaFilter;
 import web.controlevacinacao.model.Cliente;
 import web.controlevacinacao.model.ItemVenda;
 import web.controlevacinacao.model.Produto;
@@ -151,7 +154,7 @@ public class VendaController {
 
         // Calcular subtotal e adicionar à venda na sessão
         Venda venda = (Venda) sessao.getAttribute("venda");
-        itemVenda.setPrecoUnitario(produto.getPrecoVenda()); // garante consistência de preço
+        itemVenda.setPrecoUnitario(produto.getPrecoVenda());
         itemVenda.setSubTotal(itemVenda.getPrecoUnitario() * itemVenda.getQuantidade());
         itemVenda.setVenda(venda);
 
@@ -203,4 +206,75 @@ public class VendaController {
             return "redirect:/vendas/pesquisarproduto";
         }
     }
+
+    @HxRequest
+    @GetMapping("/vendas/abrirpesquisa")
+    public String abrirPesquisa() {
+        return "vendas/pesquisar :: formulario";
+    }
+
+    @HxRequest
+    @GetMapping("/vendas/pesquisar")
+    public String pesquisar(VendaFilter filtro, Model model,
+            @PageableDefault(size = 8) @SortDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable,
+            HttpServletRequest request) {
+        Page<Venda> pagina = vendaRepository.pesquisar(filtro, pageable);
+        logger.info("Vendas pesquisadas: {}", pagina);
+        PageWrapper<Venda> paginaWrapper = new PageWrapper<>(pagina, request);
+        model.addAttribute("pagina", paginaWrapper);
+        return "vendas/listar :: tabela";
+    }
+
+    @HxRequest
+    @HxLocation(path = "/mensagem", target = "#main", swap = "outerHTML")
+    @GetMapping("/vendas/remover/{codigo}")
+    public String remover(@PathVariable("codigo") Long codigo, RedirectAttributes attributes) {
+        vendaService.remover(codigo);
+        attributes.addFlashAttribute("notificacao",
+                new NotificacaoSweetAlert2("Venda removida com sucesso!", TipoNotificaoSweetAlert2.SUCCESS, 4000));
+        return "redirect:/vendas/abrirpesquisa";
+    }
+
+    @HxRequest
+    @GetMapping("/vendas/alterar/{codigo}")
+    public String abrirAlterar(@PathVariable("codigo") Long codigo, Model model, HttpSession sessao) {
+        Venda venda = vendaRepository.buscarCompletoCodigo(codigo);
+        if (venda != null) {
+            sessao.setAttribute("venda", venda);
+            model.addAttribute("venda", venda);
+            return "vendas/alterar :: formulario";
+        } else {
+            model.addAttribute("mensagem", "Não existe uma venda com esse código");
+            return "mensagem :: texto";
+        }
+    }
+
+    @HxRequest
+    @PostMapping("vendas/alterar")
+    public String alterar(@Valid Venda venda, BindingResult resultado,
+            RedirectAttributes redirectAttributes, HttpSession sessao) {
+        if (resultado.hasErrors()) {
+            logger.info("A venda recebida para alterar não é válida.");
+            logger.info("Erros encontrados:");
+            for (FieldError erro : resultado.getFieldErrors()) {
+                logger.info("{}", erro);
+            }
+            for (ObjectError erro : resultado.getGlobalErrors()) {
+                logger.info("{}", erro);
+            }
+            return "vendas/alterar :: formulario";
+        } else {
+            Venda salva = (Venda) sessao.getAttribute("venda");
+            salva.setData(venda.getData());
+            vendaService.alterar(salva);
+            sessao.removeAttribute("venda");
+
+            redirectAttributes.addFlashAttribute("notificacao",
+                    new NotificacaoSweetAlert2("Venda alterada com sucesso!",
+                            TipoNotificaoSweetAlert2.SUCCESS, 4000));
+
+            return "redirect:/vendas/abrirpesquisa";
+        }
+    }
+
 }
