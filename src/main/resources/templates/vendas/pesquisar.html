@@ -30,17 +30,17 @@
                         </div>
 
                         <!-- Datas -->
-                        <div class="flex flex-wrap justify-between gap-4 mt-5">
+                        <div class="flex flex-wrap justify-between gap-4">
                             <div class="md:flex-1 md:max-w-[49%]">
-                                <label for="minData" class="block text-gray-700 font-medium mb-2">Data a partir de</label>
-                                <input type="date" name="minData" id="minData"
-                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500" />
+                                <div
+                                    th:replace="~{layout/fragments/forms :: inputdatasimples('Data de Cadastro a partir de', 'minData')}">
+                                </div>
                             </div>
 
                             <div class="md:flex-1 md:max-w-[49%]">
-                                <label for="maxData" class="block text-gray-700 font-medium mb-2">Data até</label>
-                                <input type="date" name="maxData" id="maxData"
-                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500" />
+                                <div
+                                    th:replace="~{layout/fragments/forms :: inputdatasimples('Data de Cadastro até', 'maxData')}">
+                                </div>
                             </div>
                         </div>
 
@@ -49,7 +49,8 @@
                             <div class="md:flex-1 md:max-w-[49%]">
                                 <label for="nomeCliente" class="block text-gray-700 font-medium mb-2">Nome do Cliente</label>
                                 <input type="text" name="nomeCliente" id="nomeCliente"
-                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500" />
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500" /> venda.cliente.nome
+                                
                             </div>
 
                             <div class="md:flex-1 md:max-w-[49%]">

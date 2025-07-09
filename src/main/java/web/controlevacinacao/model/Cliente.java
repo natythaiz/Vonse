@@ -28,7 +28,7 @@ public class Cliente implements Serializable{
     private String nome;
     @NotBlank(message = "O contato é obrigatório")
     private String contato;
-    private LocalDate dataCadastro;
+    private LocalDate dataCadastro = LocalDate.now();
     @Enumerated(EnumType.STRING)
 	private Status status = Status.ATIVO;
 

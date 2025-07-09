@@ -52,8 +52,8 @@ public class ProdutoQueriesImpl implements ProdutoQueries {
 
 		if (filtro.getId() != null) {
 			PaginacaoUtil.fazerLigacaoCondicoes(condicoes, condicao);
-			condicoes.append("p.codigo = :codigo");
-			parametros.put("codigo", filtro.getId());
+			condicoes.append("p.id = :id");
+			parametros.put("id", filtro.getId());
 			condicao = true;
 		}
 		// private String nome;
