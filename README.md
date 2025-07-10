@@ -124,9 +124,8 @@ __sudo apt update && sudo apt install -y pgadmin4-desktop__
 Feito isso, dê esses comandos no terminal na pasta onde o projeto estará:  
 __git clone https://github.com/natythaiz/Vonse.git__  
 __cd Vonse__  
-   Se quiser editar e postar no git novamente, edite e faça:  
-   __git add .__  
-   __git commit -m "Comentário do commit"__  
-   __git push origin main__  
-  Se alguém da equipe fez alguma alteração e você quiser puxar o que foi alterado, faça:  
-   __git pull origin main__
+__pnpm i__  
+
+Em um terminal novo dentro do vscode, faça:  
+__mvn "-Dspring-boot.run.profiles=https" spring-boot:run__  
+Abra o link no navegador: __https://localhost:8443__
