@@ -27,6 +27,13 @@
                                 <input type="number" name="id" id="id"
                                     class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500" />
                             </div>
+
+                            <div class="md:flex-1 md:max-w-[49%]">
+                                <label for="nomeCliente" class="block text-gray-700 font-medium mb-2">Nome do Cliente</label>
+                                <input type="text" name="nomeCliente" id="nomeCliente"
+                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500" /> 
+                                
+                            </div>
                         </div>
 
                         <!-- Datas -->
@@ -41,22 +48,6 @@
                                 <div
                                     th:replace="~{layout/fragments/forms :: inputdatasimples('Data de Cadastro até', 'maxData')}">
                                 </div>
-                            </div>
-                        </div>
-
-                        <!-- Nome do Cliente e Nome do Produto -->
-                        <div class="flex flex-wrap justify-between gap-4 mt-5">
-                            <div class="md:flex-1 md:max-w-[49%]">
-                                <label for="nomeCliente" class="block text-gray-700 font-medium mb-2">Nome do Cliente</label>
-                                <input type="text" name="nomeCliente" id="nomeCliente"
-                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500" /> venda.cliente.nome
-                                
-                            </div>
-
-                            <div class="md:flex-1 md:max-w-[49%]">
-                                <label for="nomeProduto" class="block text-gray-700 font-medium mb-2">Nome do Produto</label>
-                                <input type="text" name="nomeProduto" id="nomeProduto"
-                                    class="w-full py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500" />
                             </div>
                         </div>
 

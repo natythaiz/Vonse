@@ -11,15 +11,54 @@
 <body hx-ext="response-targets" hx-target-5*="#main" hx-target-4*="#main">
   <!-- conteudo principal -->
   <main layout:fragment="conteudo" id="main" class="flex flex-col align-middle justify-center w-full m-5">
-    <h2 class="text-xl md:text-4xl text-left font-semibold text-teal-600">
-      <span th:text="${mesAtual}">MÊS</span>
+    <h2 class="text-xl md:text-4xl text-left font-semibold text-teal-600 mt-1">
+      Resumo do mês
     </h2>
-    <h3 class="text-lg md:text-2xl text-left font-semibold text-gray-600 mt-2">
-      Total de vendas do mês: R$ <span th:text="${totalVendasMes}">0,00</span>
-    </h3>
+    <div class="flex flex-col md:flex-row justify-between mt-12 gap-8">
 
+      <!-- Coluna de textos -->
+      <div class="flex flex-col w-full md:w-1/2">
+        <h2 class="text-xl md:text-4xl text-left font-semibold text-teal-600">
+          <span th:text="${mesAtual}">MÊS</span>
+        </h2>
+        <div class="mt-12">
+          <h3 class="text-lg md:text-2xl text-left font-semibold text-gray-600">
+            Total de vendas do mês:
+          </h3>
+          <p class="text-2xl md:text-3xl font-bold text-teal-600 items-center mt-3">
+            R$ <span th:text="${#numbers.formatDecimal(valorTotalMesAtual, 1, 'POINT', 2, 'COMMA')}">0,00</span>
+          </p>
+        </div>
 
-    <img th:src="@{/images/Gerenciamento_Vonse.png}" class="mt-10 mx-auto block" alt="Zé Gotinha" />
+        <div class="mt-12">
+          <h3 class="text-lg md:text-2xl text-left font-semibold text-gray-600">
+            Quantidade de clientes cadastrados no mês:
+          </h3>
+          <p class="text-2xl md:text-3xl font-bold text-teal-600 mt-3">
+            <span th:text="${quantidadeClientesMesAtual}">0</span>
+          </p>
+        </div>
+
+        <div class="mt-12">
+          <h3 class="text-lg md:text-2xl text-left font-semibold text-gray-600">
+            Qtd de produtos com estoque baixo (&lt; 2):
+          </h3>
+          <p class="text-2xl md:text-3xl font-bold mt-3"
+            th:classappend="${quantidadeProdutosBaixoEstoque > 0} ? 'text-red-600' : 'text-green-600'">
+            <span th:text="${quantidadeProdutosBaixoEstoque}">0</span>
+          </p>
+        </div>
+        
+      </div>
+
+      <!-- Coluna de imagem -->
+      <div class="w-full md:w-1/2 flex justify-center">
+        <img th:src="@{/images/Gerenciamento_Vonse.png}" class="max-w-full h-auto rounded-lg shadow-md"
+          alt="Logo Vonse" />
+      </div>
+
+    </div>
+
   </main>
 </body>
 

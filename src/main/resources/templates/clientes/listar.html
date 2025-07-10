@@ -42,7 +42,7 @@
                                     <td>
                                         <a th:hx-get="@{/clientes/remover/{id}(id=${cliente.id})}" hx-target="#main" hx-swap="outerHTML"
                                            th:hx-confirm="${'Você vai remover o cliente ' + cliente.nome + '!'}"
-                                           class="cursor-pointer text-blue-600 hover:text-blue-500 decoration-2 hover:underline focus:outline-hidden focus:underline">
+                                           class="cursor-pointer text-red-600 hover:text-red-400 decoration-2 hover:underline focus:outline-hidden focus:underline">
                                             Remover
                                         </a>
                                     </td>

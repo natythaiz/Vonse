@@ -26,9 +26,13 @@
                 Preço Unitário: R$ <span th:text="*{precoUnitario}">0.00</span>
             </p>
 
+            <p class="text-lg mb-2 text-gray-600">
+                Quantidade disponível em estoque: <span th:text="*{produto.estoque}">1</span>
+            </p>
+
             <div class="mt-4">
                 <label for="quantidade" class="block text-gray-700 font-medium mb-2">Quantidade</label>
-                <input type="number" min="1" th:field="*{quantidade}"
+                <input type="number" min="1" max="*{produto.estoque}" th:field="*{quantidade}"
                     class="w-1/2 py-3 px-4 border-gray-300 rounded-lg text-gray-500 focus:border-gray-500 focus:ring-gray-500"
                     required>
             </div>

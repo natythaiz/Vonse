@@ -139,6 +139,9 @@ public class VendaController {
             resultado.rejectValue("quantidade", null,
                     "Quantidade solicitada (" + itemVenda.getQuantidade() + ") excede o estoque disponível ("
                             + produto.getEstoque() + ").");
+
+            model.addAttribute("mensagem", "Não é possível adicionar mais itens do que a quantidade de estoque disponível. Por favor refaça a venda e se atente aos valores informados.");
+            return "mensagem :: texto";
         }
 
         if (resultado.hasErrors()) {
@@ -168,7 +171,7 @@ public class VendaController {
         sessao.setAttribute("venda", venda);
 
         attributes.addFlashAttribute("notificacao",
-                new NotificacaoSweetAlert2("Item '" + produto.getNome() + "' adicionado à venda.",
+                new NotificacaoSweetAlert2("Item '" + itemVenda.getProduto().getNome() + "' adicionado à venda.",
                         TipoNotificaoSweetAlert2.SUCCESS, 3000));
 
         return "redirect:/vendas/pesquisarproduto";
@@ -183,6 +186,8 @@ public class VendaController {
             model.addAttribute("mensagem", "Não é possível finalizar uma venda sem itens.");
             return "mensagem :: texto";
         }
+
+        sessao.setAttribute("venda", venda); // Atualiza na sessão também
 
         model.addAttribute("venda", venda);
         return "vendas/cadastrarFinal :: formulario";

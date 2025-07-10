@@ -9,62 +9,73 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class ItemVenda implements Serializable{
+public class ItemVenda implements Serializable {
     private static final long serialVersionUID = -3935828642122652510L;
 
     @Id
-	@SequenceGenerator(name="gerador2", sequenceName="aplicacao_codigo_seq", allocationSize=1)
-	@GeneratedValue(generator="gerador2", strategy=GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "gerador2", sequenceName = "aplicacao_codigo_seq", allocationSize = 1)
+    @GeneratedValue(generator = "gerador2", strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "venda_id")
-    private Venda venda; //Adicionei o relacionamento com a classe Venda
+    private Venda venda; // Adicionei o relacionamento com a classe Venda
 
     @ManyToOne
     @JoinColumn(name = "produto_id")
     private Produto produto;
-
+    @NotNull(message = "A quantidade de itens da venda é obrigatória")
     private Long quantidade;
     private double precoUnitario;
     private double subTotal;
 
-
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public Venda getVenda() {
         return venda;
     }
+
     public void setVenda(Venda venda) {
         this.venda = venda;
     }
+
     public Produto getProduto() {
         return produto;
     }
+
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+
     public Long getQuantidade() {
         return quantidade;
     }
+
     public void setQuantidade(Long quantidade) {
         this.quantidade = quantidade;
     }
+
     public double getPrecoUnitario() {
         return precoUnitario;
     }
+
     public void setPrecoUnitario(double precoUnitario) {
         this.precoUnitario = precoUnitario;
     }
+
     public double getSubTotal() {
         return subTotal;
     }
+
     public void setSubTotal(double subTotal) {
         this.subTotal = subTotal;
     }
@@ -84,6 +95,7 @@ public class ItemVenda implements Serializable{
         result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

@@ -43,12 +43,12 @@
                                 <td th:text="${produto.fornecedor}" class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"></td>
                                 <td>
                                     <a th:hx-get="@{/produtos/alterar/{id}(id=${produto.id})}" hx-target="#main" hx-swap="outerHTML"
-                                       class="text-blue-600 hover:text-blue-500 underline">Alterar</a>
+                                       class="cursor-pointer text-blue-600 hover:text-blue-500 ">Alterar </a>
                                 </td>
                                 <td>
                                     <a th:hx-get="@{/produtos/remover/{id}(id=${produto.id})}" hx-target="#main" hx-swap="outerHTML"
                                        th:hx-confirm="${'Você vai remover o produto ' + produto.nome + '!'}"
-                                       class="text-blue-600 hover:text-blue-500 underline">Remover</a>
+                                       class="cursor-pointer text-red-600 hover:text-red-400 "> Remover</a>
                                 </td>
                             </tr>
                             <tr th:if="${pagina.vazia}">
@@ -75,10 +75,10 @@
                 <p><strong>Fornecedor:</strong> <span th:text="${produto.fornecedor}"></span></p>
                 <div class="mt-2">
                     <a th:hx-get="@{/produtos/alterar/{id}(id=${produto.id})}" hx-target="#main" hx-swap="outerHTML"
-                       class="text-blue-600 hover:text-blue-500 underline mr-3">Alterar</a>
+                       class="text-blue-600 hover:text-blue-500  mr-3">Alterar</a>
                     <a th:hx-get="@{/produtos/remover/{id}(id=${produto.id})}" hx-target="#main" hx-swap="outerHTML"
                        th:hx-confirm="${'Você vai remover o produto ' + produto.nome + '!'}"
-                       class="text-blue-600 hover:text-blue-500 underline">Remover</a>
+                       class="text-red-600 hover:text-red-400 ">Remover</a>
                 </div>
             </div>
             <div th:if="${pagina.vazia}" class="text-center text-gray-500">Nenhum produto encontrado</div>

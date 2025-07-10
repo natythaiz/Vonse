@@ -83,15 +83,8 @@ public class VendaQueriesImpl implements VendaQueries {
 
         if (StringUtils.hasText(filtro.getNomeCliente())) {
             PaginacaoUtil.fazerLigacaoCondicoes(condicoes, condicao);
-            condicoes.append("lower(c.nome) like :nomeCliente");
+            condicoes.append("lower(v.cliente.nome) like :nomeCliente");
             parametros.put("nomeCliente", "%" + filtro.getNomeCliente().toLowerCase() + "%");
-            condicao = true;
-        }
-
-        if (StringUtils.hasText(filtro.getNomeProduto())) {
-            PaginacaoUtil.fazerLigacaoCondicoes(condicoes, condicao);
-            condicoes.append("lower(p.nome) like :nomeProduto");
-            parametros.put("nomeProduto", "%" + filtro.getNomeProduto().toLowerCase() + "%");
             condicao = true;
         }
 

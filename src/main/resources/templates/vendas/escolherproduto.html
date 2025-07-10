@@ -94,11 +94,12 @@
             </div>
         </div>
 
-        <a th:hx-get="@{/vendas/cadastrarFinal}"
-            class="inline-block px-4 py-2 text-sm mt-5 font-medium text-white bg-teal-600 rounded hover:bg-teal-700 transition">
-            Finalizar Venda
-        </a>
-
+        <div class="flex justify-end bottom-10 right-10 z-50 mt-2">
+            <a th:hx-get="@{/vendas/cadastrarFinal}" hx-target="#main" hx-swap="outerHTML"
+                class="px-4 py-2 inline-flex items-center text-sm font-medium text-white bg-teal-600 rounded hover:bg-teal-700 transition shadow-lg">
+                Finalizar Venda
+            </a>
+        </div>
 
         <div th:replace="~{layout/fragments/paginacao :: paginacao(${pagina})}"></div>
 
