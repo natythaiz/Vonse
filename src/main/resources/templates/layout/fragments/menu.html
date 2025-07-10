@@ -47,9 +47,9 @@
       <button
         th:replace="~{layout/fragments/menu-item-button :: menu-item-button('Relatórios', ~{::#relatorios-icon})}"></button>
       <div x-show="open" class="space-y-4 ps-10">
-        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Vacinas', '/', ~{::#pdf-icon})}"></div>
-        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Lotes', '/', ~{::#pdf-icon})}"></div>
-        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Aplicações', '/', ~{::#pdf-icon})}"></div>
+        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Produtos', @{/relatorios/produtos}, ~{::#pdf-icon})}"></div>
+        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Clientes', @{/relatorios/clientes}, ~{::#pdf-icon})}"></div>
+        <div th:replace="~{layout/fragments/menu-item-option :: menu-item-option('Vendas', @{/relatorios/vendas}, ~{::#pdf-icon})}"></div>
       </div>
     </div>
 

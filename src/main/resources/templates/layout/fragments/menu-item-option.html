@@ -15,7 +15,12 @@
         <!-- Imagem -->
         <svg th:replace="${svg}"></svg>
         <!-- Texto -->
-        <a th:text="${texto}" th:hx-get="${url}" hx-target="#main" hx-swap="outerHTML" hx-push-url="true" class="cursor-pointer px-2 text-gray-300 hover:text-white">Cadastrar</a>
+        <th:block th:if="${texto == 'Produtos' or texto == 'Clientes' or texto == 'Vendas'}">
+            <a th:text="${texto}" th:href="${url}" target="_blank" class="cursor-pointer px-2 text-gray-300 hover:text-white">Cadastrar</a>
+        </th:block>
+        <th:block th:unless="${texto == 'Produtos' or texto == 'Clientes' or texto == 'Vendas'}">
+            <a th:text="${texto}" th:hx-get="${url}" hx-target="#main" hx-swap="outerHTML" hx-push-url="true" class="cursor-pointer px-2 text-gray-300 hover:text-white">Cadastrar</a>
+        </th:block>
     </div>
 
 </body>

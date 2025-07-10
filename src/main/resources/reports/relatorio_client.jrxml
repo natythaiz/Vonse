@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_client" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fad16ede-ef8e-4fb3-9306-e8d578a75699">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="Y2xpZW50ZSBBUyAsMTc2LDc1LGJhOGYwNWQyLWFlYTUtNDBmMi04MTBhLTc2ZmU5ZGMyODA3Zjs=&#xA;"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Trem do Orbolato"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT cliente.id,
+	cliente.nome,
+	cliente.contato,
+	cliente.data_cadastro,
+	cliente.status
+FROM cliente]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="contato" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="contato"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="data_cadastro" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data_cadastro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="nome">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
+	</group>
+	<group name="contato">
+		<groupExpression><![CDATA[$F{contato}]]></groupExpression>
+	</group>
+	<group name="data_cadastro">
+		<groupExpression><![CDATA[$F{data_cadastro}]]></groupExpression>
+	</group>
+	<group name="status">
+		<groupExpression><![CDATA[$F{status}]]></groupExpression>
+	</group>
+	<background>
+		<band height="1" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="560" height="1" uuid="b3c16c7c-2914-498f-a538-d3f46ded45c3"/>
+			</line>
+		</band>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="0" width="595" height="51" uuid="2976f2e8-bfd8-4416-a09e-7befdbea0a5b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Clientes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="127" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="100" height="20" uuid="c39bf603-8e77-42c9-ad5b-812beb7bd054"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="20" height="20" uuid="3d025eef-11dc-4e06-a69d-4b3510d96697"/>
+				<text><![CDATA[ID:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="20" width="100" height="20" uuid="9aabca74-876c-4eb2-840a-e569385ae290"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="30" height="20" uuid="c572cf97-641b-4684-b3ed-0243d7c50ca5"/>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="40" width="100" height="20" uuid="581ddb85-26de-4375-ae09-6c2fed43d788"/>
+				<textFieldExpression><![CDATA[$F{contato}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="40" height="20" uuid="f323761f-82e8-4e79-9537-905d8da2363f"/>
+				<text><![CDATA[Contato:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="60" width="100" height="20" uuid="7d2c91d4-304b-41e7-80fb-c45b174384d8"/>
+				<textFieldExpression><![CDATA[$F{data_cadastro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="60" width="80" height="20" uuid="50a4f587-baa8-4355-ba9a-4ba39cde5b24"/>
+				<text><![CDATA[Data de cadastro:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="80" width="100" height="20" uuid="a081c70d-72b9-4c3e-95bb-4ecc3f2f8089"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="80" width="40" height="20" uuid="74b876ce-d6d2-4598-b1e7-3cba910f913a"/>
+				<text><![CDATA[Status:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="560" height="1" uuid="75e3b250-7f1d-467a-9129-2c570d5c0c97"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

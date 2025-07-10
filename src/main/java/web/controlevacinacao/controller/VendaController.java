@@ -187,6 +187,14 @@ public class VendaController {
             return "mensagem :: texto";
         }
 
+        // Garante que cada ItemVenda tenha o Produto completo
+        for (ItemVenda item : venda.getItensVendidos()) {
+            if (item.getProduto() != null && (item.getProduto().getNome() == null || item.getProduto().getNome().isEmpty())) {
+                Produto produtoCompleto = produtoRepository.findById(item.getProduto().getId()).orElse(null);
+                item.setProduto(produtoCompleto);
+            }
+        }
+
         sessao.setAttribute("venda", venda); // Atualiza na sessão também
 
         model.addAttribute("venda", venda);

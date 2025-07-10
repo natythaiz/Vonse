@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_prod" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0a219cf3-2e8e-48f6-b849-251ae7f67dda">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="cHJvZHV0byBBUyAsNzAsMjMsZDNlNjJkZTEtMzczYi00YzcxLTk5YjctYmIxZjEzNDA5MDE0Ow==&#xA;"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Trem do Orbolato"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT produto.id,
+	produto.nome,
+	produto.categoria,
+	produto.tipo,
+	produto.preco_custo,
+	produto.preco_venda,
+	produto.estoque,
+	produto.descricao,
+	produto.fornecedor,
+	produto.status
+FROM produto]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="categoria" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="preco_custo" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="preco_custo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="preco_venda" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="preco_venda"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="estoque" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="estoque"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="descricao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="fornecedor" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fornecedor"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="nome">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
+	</group>
+	<group name="categoria">
+		<groupExpression><![CDATA[$F{categoria}]]></groupExpression>
+	</group>
+	<group name="tipo">
+		<groupExpression><![CDATA[$F{tipo}]]></groupExpression>
+	</group>
+	<group name="preco_custo">
+		<groupExpression><![CDATA[$F{preco_custo}]]></groupExpression>
+	</group>
+	<group name="preco_venda">
+		<groupExpression><![CDATA[$F{preco_venda}]]></groupExpression>
+	</group>
+	<group name="estoque">
+		<groupExpression><![CDATA[$F{estoque}]]></groupExpression>
+	</group>
+	<group name="descricao">
+		<groupExpression><![CDATA[$F{descricao}]]></groupExpression>
+	</group>
+	<group name="fornecedor">
+		<groupExpression><![CDATA[$F{fornecedor}]]></groupExpression>
+	</group>
+	<group name="status">
+		<groupExpression><![CDATA[$F{status}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="560" height="51" uuid="daf9d85c-66aa-4099-91be-b54671cf6eb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Agency FB" size="26"/>
+				</textElement>
+				<text><![CDATA[Produtos]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="460" y="0" width="100" height="30" uuid="b9bf639a-3a87-43ae-83dd-c740605c1a01"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="195" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="194" width="560" height="1" uuid="193b5a97-9206-40fb-83e2-b331c5451a1b"/>
+			</line>
+			<textField>
+				<reportElement x="20" y="-1" width="540" height="20" uuid="f29d4aeb-5942-48cc-ac26-e4ab60eaf866"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="-1" width="20" height="20" uuid="7c350b48-7a07-4672-b07a-7fa208eb8460"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<text><![CDATA[ID:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="20" width="530" height="20" uuid="bd2b0a5e-395a-4ffa-bbbc-6e9ae259ecfe"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="30" height="20" uuid="1c3a27d0-5c94-444d-a07b-c86743020e2a"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<text><![CDATA[Nome:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="52" y="40" width="508" height="16" uuid="dadc5867-3717-44a4-99c9-54d7ccf24aa8"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="52" height="16" uuid="44e2ee7c-8fab-4e60-9657-81922a04cbdf"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<text><![CDATA[Categoria:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="23" y="56" width="536" height="15" uuid="1069db3a-12cc-48b9-8b4e-ea43b90b1d14"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="56" width="23" height="15" uuid="5b3279bd-8032-4d88-a55d-7a9451418292"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<text><![CDATA[Tipo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="71" width="489" height="20" uuid="ece820c6-02dc-45a3-8451-459fa778611a"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{preco_custo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="71" width="70" height="20" uuid="5bc11339-eeb8-47d9-b071-e1847f8d1703"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<text><![CDATA[Preço de custo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="91" width="488" height="20" uuid="6685e761-420f-471b-8ccd-7455d398f5ed"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{preco_venda}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="91" width="70" height="20" uuid="fba89a20-db95-40da-9a3f-e3df2485d9a0"/>
+				<textElement>
+					<font fontName="Agency FB" size="10"/>
+				</textElement>
+				<text><![CDATA[Preço de venda:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="111" width="518" height="19" uuid="4a4c1329-2cd2-4c37-9d34-dfe24f64fc56"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estoque}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="111" width="40" height="19" uuid="e8ad0dbd-cbe2-4525-99e2-cb0d9efa117c"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<text><![CDATA[Estoque:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="52" y="130" width="505" height="20" uuid="2aa771d7-8cfd-4748-97ca-e1fd3374f8af"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="130" width="52" height="20" uuid="1d279a91-1c91-4483-ba6b-3eb00e3b4156"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<text><![CDATA[Descrição:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="62" y="150" width="494" height="20" uuid="30b1870e-809b-427b-aeec-dc6b31c802ec"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fornecedor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="150" width="62" height="20" uuid="f3b4a5b4-1cf2-4539-8abc-920f242431eb"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<text><![CDATA[Fornecedor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="170" width="515" height="20" uuid="43e0dcbe-f397-4177-b1b3-a7d86077c1a0"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="170" width="40" height="20" uuid="8b49c828-253d-4163-91a0-5d0b8b6c0d4f"/>
+				<textElement>
+					<font fontName="Agency FB"/>
+				</textElement>
+				<text><![CDATA[Status:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_venda" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="25925bdc-047c-4d2a-9edc-b0dc17319726">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="dmVuZGEgQVMgLDk2LDI1LGQ3NmQwMDcyLWI5ZjItNDgzOS1iMjBjLTkyMjBmYTBlYzZkYjs=&#xA;"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Trem do Orbolato"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT venda.id,
+	venda.data,
+	venda.cliente_id,
+	venda.valor_total,
+	venda.status
+FROM venda]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="data" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="cliente_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="cliente_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="valor_total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="valor_total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="venda"/>
+	</field>
+	<group name="id">
+		<groupExpression><![CDATA[$F{id}]]></groupExpression>
+	</group>
+	<group name="data">
+		<groupExpression><![CDATA[$F{data}]]></groupExpression>
+	</group>
+	<group name="cliente_id">
+		<groupExpression><![CDATA[$F{cliente_id}]]></groupExpression>
+	</group>
+	<group name="valor_total">
+		<groupExpression><![CDATA[$F{valor_total}]]></groupExpression>
+	</group>
+	<group name="status">
+		<groupExpression><![CDATA[$F{status}]]></groupExpression>
+	</group>
+	<background>
+		<band height="5" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="560" height="1" uuid="6a0d1f14-7490-4ef0-931b-a868bb9eb07d"/>
+			</line>
+		</band>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="-20" y="0" width="595" height="51" uuid="429f49d2-5950-4e57-ac28-f107f6af12df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Vendas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="128" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="30" height="20" uuid="6052942f-b6fc-434e-97df-65f3468ae838"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="20" height="20" uuid="f5053324-1c17-4f21-8d1c-7514bef16062"/>
+				<text><![CDATA[ID:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="20" width="100" height="20" uuid="6aace106-63c2-4a8b-95bc-0a8fbc0938ff"/>
+				<textFieldExpression><![CDATA[$F{data}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="30" height="20" uuid="4cb3a6c3-3f1d-4067-a94d-fe392f52896a"/>
+				<text><![CDATA[Data:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="60" y="40" width="100" height="20" uuid="b1fec31e-7c85-47b8-a639-2a201f1a0cc2"/>
+				<textFieldExpression><![CDATA[$F{cliente_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="60" height="20" uuid="a09f9d04-b481-44d3-a45b-9d59018494a4"/>
+				<text><![CDATA[ID do cliente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="60" width="100" height="20" uuid="5a0a163f-9aac-423a-9f27-bd0611c5a870"/>
+				<textFieldExpression><![CDATA[$F{valor_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="60" width="50" height="20" uuid="225484cb-7674-4c6e-8dc8-bc209aaf9ddc"/>
+				<text><![CDATA[Valor total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="40" y="80" width="100" height="20" uuid="450aaee5-779b-4921-8e2c-8af7c4dc72c1"/>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="80" width="40" height="20" uuid="f22bebde-500f-4ec7-8e0e-140053a138d6"/>
+				<text><![CDATA[Status:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="560" height="1" uuid="3c237689-22d3-42d9-b5b0-f6c95d122501"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>
