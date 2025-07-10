@@ -1,4 +1,4 @@
-# VONSE DASHBOARD (E-COMMERCE)
+# VONSE
 OBS: O código é construído principalmente no Linux Mint, mas, há a possibilidade do uso no Windows: 1. Instale o Java (JRE e JDK), 2. Instale o Apache Maven (qualquer vídeo no YouTube já te ajuda, como esse aqui: https://www.youtube.com/watch?v=-ucX5w8Zm8s), 3. Não há necessidade do uso do Docker no Windows, contanto que o banco de dados no PostgreSQL seja criado com o mesmo nome do código (controlevacinacao).
 
 ## Para usar o código (instalações no Linux, pelo terminal):
